@@ -1,5 +1,5 @@
 <div class="w-full mx-auto px-4 md:px-24 mb-16 mt-16 sm:mt-20">
-    <div class="w-full mx-auto">
+    <div class="w-full max-w-[1200px] mx-auto">
         <!-- Titre principal -->
         <div class="overflow-hidden mb-12">
             <div class="w-full flex justify-center">

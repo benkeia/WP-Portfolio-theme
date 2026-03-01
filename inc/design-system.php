@@ -149,7 +149,7 @@ class DS
         if (!$content) return;
     ?>
         <section class="w-full py-20 px-4 md:px-24">
-            <div class="w-full mx-auto">
+            <div class="w-full max-w-[1200px] mx-auto">
                 <div class="reveal-type text-neutral-600 text-xl md:text-3xl lg:text-4xl font-light leading-relaxed"
                     data-bg-color="#525252"
                     data-fg-color="#ffffff">

@@ -285,16 +285,16 @@ add_action('wp_enqueue_scripts', function () {
         // En production, lire le manifest Vite pour avoir les vrais fichiers
         $manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
         $theme_version = wp_get_theme()->get('Version');
-        
+
         if (file_exists($manifest_path)) {
             $manifest = json_decode(file_get_contents($manifest_path), true);
-            
+
             // Fichier JS principal
             if (isset($manifest['resources/js/app.js']['file'])) {
                 $js_file = $manifest['resources/js/app.js']['file'];
                 wp_enqueue_script('portfolio-app', get_template_directory_uri() . '/dist/' . $js_file, [], $theme_version, true);
             }
-            
+
             // Fichiers CSS (Il y a souvent 2 CSS : celui du Theme et celui importé par JS genre LightGallery)
             if (isset($manifest['resources/css/app.css']['file'])) {
                 $css_file = $manifest['resources/css/app.css']['file'];

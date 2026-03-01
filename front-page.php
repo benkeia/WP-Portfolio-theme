@@ -9,7 +9,7 @@ get_header();
         <?php get_template_part('template-parts/hero'); ?>
 
         <div class="w-full mx-auto flex justify-center items-center mt-8 px-4 md:px-24">
-            <div class="w-full mx-auto py-14 flex flex-col justify-center items-center">
+            <div class="w-full max-w-[1200px] mx-auto py-14 flex flex-col justify-center items-center">
                 <div class="w-full mx-auto flex flex-col justify-center items-center gap-6">
                     <div class="w-full flex flex-row items-center justify-between gap-2 mb-2">
                         <div class="text-neutral-50 text-4xl font-medium leading-[48px]">

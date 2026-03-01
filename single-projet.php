@@ -21,7 +21,8 @@ get_header();
     ?>
 
     <section class="w-full pt-32 pb-12 px-4 md:px-24">
-        <div class="w-full mx-auto">
+        <div class="w-full max-w-[1200px] mx-auto">
+            <?php get_template_part('template-parts/breadcrumb'); ?>
             <div class="flex flex-col gap-3 mb-12 pb-8 border-b border-neutral-800">
                 <!-- Titre principal (Nom du projet WP) avec style Hero -->
                 <div class="overflow-hidden">
@@ -74,7 +75,7 @@ get_header();
                 $chiffres    = get_sub_field('chiffres_cles');
             ?>
                 <section class="w-full py-20 px-4 md:px-24 bg-neutral-900">
-                    <div class="w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                         <div class="lg:col-span-7 space-y-8">
                             <?php if ($titre_pitch) DS::title($titre_pitch, 'h2'); ?>
                             <div class="prose-custom text-neutral-400 text-lg leading-relaxed">
@@ -104,7 +105,7 @@ get_header();
                 $cartes     = get_sub_field('cartes');
             ?>
                 <section class="w-full py-24 px-4 md:px-24">
-                    <div class="w-full mx-auto">
+                    <div class="w-full max-w-[1200px] mx-auto">
                         <?php if ($titre_tech) DS::title($titre_tech, 'h2', 'mb-16 text-center'); ?>
 
                         <?php if ($cartes): ?>
@@ -154,10 +155,12 @@ get_header();
     $next_post = get_next_post();
     if ($next_post):
     ?>
-        <section class="border-t border-neutral-800 py-20 px-4 md:px-24 text-center">
-            <p class="text-neutral-500 text-sm uppercase mb-4">Projet Suivant</p>
-            <?php DS::title(get_the_title($next_post->ID), 'h2', 'mb-8'); ?>
-            <?php DS::link_button(get_permalink($next_post->ID), "Découvrir"); ?>
+        <section class="border-t border-neutral-800 py-20 px-4 md:px-24">
+            <div class="w-full max-w-[1200px] mx-auto text-center">
+                <p class="text-neutral-500 text-sm uppercase mb-4">Projet Suivant</p>
+                <?php DS::title(get_the_title($next_post->ID), 'h2', 'mb-8'); ?>
+                <?php DS::link_button(get_permalink($next_post->ID), "Découvrir"); ?>
+            </div>
         </section>
     <?php endif; ?>
 
