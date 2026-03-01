@@ -115,7 +115,12 @@ if (!window.__barbaInitialized) {
         
         // 1. INITIALISATION DE LA PREMIÈRE PAGE
         once(data) {
-          initHeroTextResize();
+          // document.fonts.ready garantit que les Web Fonts sont chargées AVANT que
+          // Fitty ne calcule la taille du texte. Sans ça, Fitty mesure la police fallback
+          // et le texte déborde ou est mal dimensionné au premier rendu.
+          document.fonts.ready.then(() => {
+            initHeroTextResize();
+          });
           initTextReveal();
           initGallery();
 
@@ -158,7 +163,10 @@ if (!window.__barbaInitialized) {
           try { cleanupTextReveal();  } catch(e) { console.warn('[Barba] cleanupTextReveal error:', e); }
           try { cleanupGallery();     } catch(e) { console.warn('[Barba] cleanupGallery error:', e); }
           try { cleanupAboutReveal(); } catch(e) { console.warn('[Barba] cleanupAboutReveal error:', e); }
-          try { cleanupFitty();       } catch(e) { console.warn('[Barba] cleanupFitty error:', e); }
+          // cleanupFitty() est intentionnellement ABSENT ici.
+          // L'appeler avant que la grille ne recouvre l'écran ferait sauter le CSS inline
+          // de Fitty et rétrécirait le texte sous les yeux de l'utilisateur.
+          // Il est appelé dans l'onComplete du leave, quand l'écran est totalement couvert.
         },
 
         // 3. LEAVE : On cache l'ancienne page avec l'overlay
@@ -176,7 +184,12 @@ if (!window.__barbaInitialized) {
             autoAlpha: 1,
             stagger: { amount: 0.3, from: "random", grid: [8, 9] },
             duration: 0.3,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
+            onComplete: () => {
+              // La grille couvre 100% de l'écran : on peut nettoyer Fitty en toute sécurité.
+              // Les window.removeEventListener de Fitty sont exécutés sans flash visible.
+              try { cleanupFitty(); } catch(e) { console.warn('[Barba] cleanupFitty error:', e); }
+            }
           });
         },
 
