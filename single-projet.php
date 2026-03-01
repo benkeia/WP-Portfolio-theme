@@ -1,10 +1,13 @@
 <?php
 require_once get_template_directory() . '/inc/design-system.php';
 
+// Le namespace Barba doit être défini AVANT get_header().
+// C'est header.php qui ouvre l'unique <main data-barba="container">.
+// Ne jamais ouvrir un second data-barba="container" ici.
+$barba_namespace = 'project-' . get_post_field('post_name', get_post());
+
 get_header();
 ?>
-
-<main data-barba="container" data-barba-namespace="project-<?php echo get_post_field('post_name', get_post()); ?>">
 
     <article class="bg-neutral-900 min-h-screen">
 
@@ -160,7 +163,5 @@ get_header();
         <?php endif; ?>
 
     </article>
-
-</main>
 
 <?php get_footer(); ?>
