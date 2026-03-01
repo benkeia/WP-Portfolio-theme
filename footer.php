@@ -21,11 +21,15 @@
                 <style>
                     #footer-navigation a {
                         text-decoration: none !important;
-                        color: #a3a3a3; /* neutral-400 */
-                        font-size: 0.875rem; /* text-sm */
-                        font-weight: 300; /* font-light */
+                        color: #a3a3a3;
+                        /* neutral-400 */
+                        font-size: 0.875rem;
+                        /* text-sm */
+                        font-weight: 300;
+                        /* font-light */
                         transition: color 200ms;
                     }
+
                     #footer-navigation a:hover {
                         color: #ffffff;
                     }
