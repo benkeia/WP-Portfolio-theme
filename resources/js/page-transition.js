@@ -215,6 +215,12 @@ barba.init({
     },
 
     async enter(data) {
+      // S'assurer que le container est visible AVANT toute animation
+      gsap.set(data.next.container, { 
+          autoAlpha: 1,
+          clearProps: "transform"
+      });
+      
       // Animate grid out + content in simultanément
       const container = document.querySelector(TRANSITION_EL);
       
@@ -229,13 +235,20 @@ barba.init({
           onComplete: () => gsap.set(container, { display: "none" })
       });
       
-      // Contenu apparait (overlap)
-      tl.from(data.next.container, {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.5,
-          ease: "power2.out"
-      }, "-=0.2");
+      // Contenu apparait (overlap) - fromTo pour être explicite
+      tl.fromTo(data.next.container, 
+          {
+              autoAlpha: 0,
+              y: 20
+          },
+          {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out"
+          }, 
+          "-=0.2"
+      );
       
       await tl;
     },

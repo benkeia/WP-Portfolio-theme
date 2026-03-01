@@ -66,7 +66,7 @@ class LegoSimulation {
         try {
             this.showLoader();
             
-            await RAPIER.init();
+            await RAPIER.init({});
             this.world = new RAPIER.World({ x: 0, y: this.params.gravity, z: 0 });
             
             this.setupScene();
