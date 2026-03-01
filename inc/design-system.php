@@ -8,32 +8,6 @@
 
 class DS
 {
-    /**
-     * Récupère l'URL du GIF original sans le suffixe d'édition WordPress (-e[timestamp])
-     */
-    private static function get_original_gif_url(int $attachment_id): string
-    {
-        $file_path = get_attached_file($attachment_id);
-        if (!$file_path) {
-            return wp_get_attachment_url($attachment_id);
-        }
-
-        // Si le fichier contient -e suivi de chiffres avant .gif, on essaie de trouver l'original
-        if (preg_match('/-e\d+\.gif$/i', $file_path)) {
-            // Supprimer le suffixe -e[timestamp]
-            $original_path = preg_replace('/-e\d+(\.gif)$/i', '$1', $file_path);
-
-            // Vérifier si le fichier original existe
-            if (file_exists($original_path)) {
-                // Convertir le chemin système en URL
-                $upload_dir = wp_upload_dir();
-                return str_replace($upload_dir['basedir'], $upload_dir['baseurl'], $original_path);
-            }
-        }
-
-        // Sinon, utiliser l'URL de l'attachement
-        return wp_get_attachment_url($attachment_id);
-    }
 
     /* ==========================================================================
        ATOMES (Éléments de base)
@@ -108,13 +82,6 @@ class DS
     {
         if (!$attachment_id) return;
 
-        // Détection des GIFs
-        $file_path = get_attached_file($attachment_id);
-        $is_gif = false;
-        if ($file_path) {
-            $is_gif = (strtolower(pathinfo($file_path, PATHINFO_EXTENSION)) === 'gif');
-        }
-
         // Valeurs par défaut pour les attributs de l'image
         $default_attr = [
             'class' => 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
@@ -122,39 +89,13 @@ class DS
 
         // Fusionner les classes si passées dans $attr
         if (isset($attr['class'])) {
-            $default_attr['class'] = $attr['class'];
+            $default_attr['class'] = $attr['class']; // On écrase ou on concatène selon le besoin, ici on remplace pour flexibilité totale
         }
 
         $final_attr = array_merge($default_attr, $attr);
     ?>
         <div class="relative w-full <?php echo esc_attr($class); ?> rounded-lg overflow-hidden bg-neutral-800 group">
-            <?php if ($is_gif): ?>
-                <?php
-                // Pour les GIFs, récupérer l'URL originale sans suffixe d'édition
-                $gif_url = self::get_original_gif_url($attachment_id);
-                $alt_text = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
-                $img_class = $final_attr['class'] ?? '';
-
-                // Retirer 'class' de final_attr pour éviter la duplication
-                $html_attrs = $final_attr;
-                unset($html_attrs['class']);
-
-                // Construction des attributs HTML
-                $attributes = '';
-                foreach ($html_attrs as $key => $value) {
-                    if (is_bool($value)) {
-                        $attributes .= $value ? ' ' . esc_attr($key) : '';
-                    } else {
-                        $attributes .= sprintf(' %s="%s"', esc_attr($key), esc_attr($value));
-                    }
-                }
-                ?>
-                <img src="<?php echo esc_url($gif_url); ?>"
-                    alt="<?php echo esc_attr($alt_text); ?>"
-                    class="<?php echo esc_attr($img_class); ?>" <?php echo $attributes; ?>>
-            <?php else: ?>
-                <?php echo wp_get_attachment_image($attachment_id, $size, false, $final_attr); ?>
-            <?php endif; ?>
+            <?php echo wp_get_attachment_image($attachment_id, $size, false, $final_attr); ?>
             <div class="absolute inset-0 border border-neutral-800/50 rounded-lg pointer-events-none z-10"></div>
         </div>
     <?php
@@ -208,7 +149,7 @@ class DS
         if (!$content) return;
     ?>
         <section class="w-full py-20 px-4 md:px-24">
-            <div class="w-full max-w-[1200px] mx-auto">
+            <div class="w-full mx-auto">
                 <div class="reveal-type text-neutral-600 text-xl md:text-3xl lg:text-4xl font-light leading-relaxed"
                     data-bg-color="#525252"
                     data-fg-color="#ffffff">
@@ -231,10 +172,8 @@ class DS
 
         // On crée un tableau unifié
         $images = $galerie_ids;
-        $has_cover = false;
         if ($affiche_id) {
             array_unshift($images, $affiche_id);
-            $has_cover = true;
         }
 
         // Sécurité : IDs uniques et format tableau
@@ -245,19 +184,14 @@ class DS
         $count = count($images);
 
         // Classes de la grille parent
-        // CAS SPÉCIAL : 3 images sans cover = ligne sur desktop, colonne sur mobile
-        if ($count === 3 && !$has_cover) {
-            $grid_cols = 'grid-cols-1 lg:grid-cols-3';
-        } else {
-            $grid_cols = match (true) {
-                $count === 1 => 'grid-cols-1',
-                $count === 2 => 'grid-cols-1 md:grid-cols-2',
-                $count === 3 => 'grid-cols-1 md:grid-cols-2',
-                $count === 4 => 'grid-cols-1 md:grid-cols-2',
-                $count === 5 => 'grid-cols-1 md:grid-cols-6',
-                default      => 'grid-cols-1 md:grid-cols-3', // 6 et +
-            };
-        }
+        $grid_cols = match (true) {
+            $count === 1 => 'grid-cols-1',
+            $count === 2 => 'grid-cols-1 md:grid-cols-2',
+            $count === 3 => 'grid-cols-1 md:grid-cols-2',
+            $count === 4 => 'grid-cols-1 md:grid-cols-2',
+            $count === 5 => 'grid-cols-1 md:grid-cols-6',
+            default      => 'grid-cols-1 md:grid-cols-3', // 6 et +
+        };
     ?>
         <section class="w-full py-20 px-4 md:px-24">
             <div class="w-full max-w-[1200px] mx-auto">
@@ -271,10 +205,7 @@ class DS
                     <?php foreach ($images as $index => $img_id):
                         $class = 'aspect-[4/3]'; // Défaut
 
-                        // CAS SPÉCIAL : 3 images sans cover = aspect carré uniforme
-                        if ($count === 3 && !$has_cover) {
-                            $class = 'aspect-square';
-                        } elseif ($count === 1) {
+                        if ($count === 1) {
                             $class = 'aspect-[16/9]';
                         } elseif ($count === 3) {
                             // 1 en haut (full), 2 en bas
@@ -291,18 +222,8 @@ class DS
                             $class = 'aspect-square';
                         }
 
-                        // Détection GIF pour préserver l'animation dans lightgallery
-                        $file_path = get_attached_file($img_id);
-                        $is_gif = false;
-                        if ($file_path) {
-                            $is_gif = (strtolower(pathinfo($file_path, PATHINFO_EXTENSION)) === 'gif');
-                        }
-
-                        // Utiliser l'URL originale pour les GIFs, sinon la taille 'full'
-                        $full_url = $is_gif
-                            ? self::get_original_gif_url($img_id)
-                            : wp_get_attachment_image_url($img_id, 'full');
-                        $thumb_url = wp_get_attachment_image_url($img_id, 'medium');
+                        $full_url = wp_get_attachment_image_url($img_id, 'full');
+                        $thumb_url = wp_get_attachment_image_url($img_id, 'medium'); // URL pour la miniature
                     ?>
                         <a href="<?php echo esc_url($full_url); ?>"
                             data-external-thumb-image="<?php echo esc_url($thumb_url); ?>"

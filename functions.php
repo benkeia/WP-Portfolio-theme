@@ -71,16 +71,7 @@ function tailpress(): TailPress\Framework\Theme
         ]));
 }
 
-// Personnalise le titre de l'onglet pour l'archive des projets
-add_filter('pre_get_document_title', function ($title) {
-    if (is_post_type_archive('projet')) {
-        return 'Mes projets'; // ou 'Projets' selon préférence
-    }
-    return $title;
-});
-
 // --- OPTIMISATION IMAGES ---
-
 add_action('after_setup_theme', function () {
     // Mobile & Tablette vertical (poids plume ~50-80ko)
     add_image_size('card-projet-mobile', 600, 340, true);
@@ -157,7 +148,7 @@ function register_projets_cpt()
         'set_featured_image'    => _x('Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'tailpress'),
         'remove_featured_image' => _x('Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'tailpress'),
         'use_featured_image'    => _x('Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'tailpress'),
-        'archives'              => _x('Projets', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'tailpress'),
+        'archives'              => _x('Projet archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'tailpress'),
         'insert_into_item'      => _x('Insert into projet', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'tailpress'),
         'uploaded_to_this_item' => _x('Uploaded to this projet', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'tailpress'),
         'filter_items_list'     => _x('Filter projets list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'tailpress'),
@@ -184,61 +175,6 @@ function register_projets_cpt()
     register_post_type('projet', $args);
 }
 add_action('init', 'register_projets_cpt');
-
-// Taxonomies pour les projets
-function register_projet_taxonomies()
-{
-    // Domaines (Ex: Web Design, E-commerce, Portfolio, etc.)
-    $domain_labels = array(
-        'name'              => _x('Domaines', 'taxonomy general name', 'tailpress'),
-        'singular_name'     => _x('Domaine', 'taxonomy singular name', 'tailpress'),
-        'search_items'      => __('Search Domaines', 'tailpress'),
-        'all_items'         => __('All Domaines', 'tailpress'),
-        'parent_item'       => __('Parent Domaine', 'tailpress'),
-        'parent_item_colon' => __('Parent Domaine:', 'tailpress'),
-        'edit_item'         => __('Edit Domaine', 'tailpress'),
-        'update_item'       => __('Update Domaine', 'tailpress'),
-        'add_new_item'      => __('Add New Domaine', 'tailpress'),
-        'new_item_name'     => __('New Domaine Name', 'tailpress'),
-        'menu_name'         => __('Domaines', 'tailpress'),
-    );
-
-    register_taxonomy('domaine', array('projet'), array(
-        'hierarchical'      => true,
-        'labels'            => $domain_labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'domaine'),
-        'show_in_rest'      => true,
-    ));
-
-    // Technologies (Ex: WordPress, React, GSAP, Three.js, etc.)
-    $tech_labels = array(
-        'name'              => _x('Technologies', 'taxonomy general name', 'tailpress'),
-        'singular_name'     => _x('Technologie', 'taxonomy singular name', 'tailpress'),
-        'search_items'      => __('Search Technologies', 'tailpress'),
-        'all_items'         => __('All Technologies', 'tailpress'),
-        'parent_item'       => __('Parent Technologie', 'tailpress'),
-        'parent_item_colon' => __('Parent Technologie:', 'tailpress'),
-        'edit_item'         => __('Edit Technologie', 'tailpress'),
-        'update_item'       => __('Update Technologie', 'tailpress'),
-        'add_new_item'      => __('Add New Technologie', 'tailpress'),
-        'new_item_name'     => __('New Technologie Name', 'tailpress'),
-        'menu_name'         => __('Technologies', 'tailpress'),
-    );
-
-    register_taxonomy('technologie', array('projet'), array(
-        'hierarchical'      => false,
-        'labels'            => $tech_labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'technologie'),
-        'show_in_rest'      => true,
-    ));
-}
-add_action('init', 'register_projet_taxonomies');
 
 function register_experiences_cpt()
 {
@@ -293,7 +229,7 @@ add_action('init', 'register_experiences_cpt');
 add_action('wp_enqueue_scripts', function () {
     // Change this to `true` to use the dev server, `false` for production build.
     // Or define this constant in your `wp-config.php` file.
-    $is_dev = defined('VITE_DEV') ? VITE_DEV : true;
+    $is_dev = defined('VITE_DEV') ? VITE_DEV : false;
 
     if ($is_dev) {
         // En mode dev, charge le JS et CSS via le serveur Vite

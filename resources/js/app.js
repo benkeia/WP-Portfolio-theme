@@ -1,21 +1,11 @@
 import './page-transition.js';
 import { initTypewriter } from './typewritter.js';
-import { initHeroTextResize } from './hero-text-resize.js';
-import './project-filters.js';
+import { initAboutReveal } from './about-reveal.js';
 import gsap from 'gsap';
 
 // Sécurité : Force la suppression du loader si le JS plante ou met trop de temps
 // Cela garantit que le site est toujours accessible, même sans animations.
 window.addEventListener('DOMContentLoaded', () => {
-    // IMPORTANT: Initialiser Fitty en PREMIER pour éviter le flash
-    initHeroTextResize();
-    
-    // Animation de reveal sur l'élément avec l'id 'reveal-test'
-    const revealElement = document.getElementById('reveal-test');
-    if (revealElement) {
-        gsap.fromTo(revealElement, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' });
-    }
-    
     setTimeout(() => {
         const loader = document.querySelector('.site-loader');
         if (loader) {
@@ -69,3 +59,17 @@ window.addEventListener('load', function () {
 // Pour Barba.js : expose la fonction pour la rappeler après chaque transition
 window.initMenuToggle = initMenuToggle;
 // window.initNavAnimation = undefined; // Désactive l'animation
+
+window.addEventListener('DOMContentLoaded', function () {
+    // Animation de reveal sur l'élément avec l'id 'reveal-test'
+    const revealElement = document.getElementById('reveal-test');
+    if (revealElement) {
+        gsap.fromTo(revealElement, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' });
+    }
+
+    // Initialise l'animation About reveal si l'élément existe
+    const aboutReveal = document.getElementById('about-reveal');
+    if (aboutReveal) {
+        initAboutReveal();
+    }
+});
