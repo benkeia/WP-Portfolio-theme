@@ -1,7 +1,7 @@
 
 # Dépendances et build
 /node_modules
-/dist
+# /dist - Commenté pour que les fichiers compilés soient versionnés (nécessaire pour Hostinger)
 /vendor
 
 # IDE et outils

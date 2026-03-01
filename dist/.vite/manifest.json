@@ -1,0 +1,47 @@
+{
+  "node_modules/lightgallery/fonts/lg.svg": {
+    "file": "assets/lg-B0dIV2BS.svg",
+    "src": "node_modules/lightgallery/fonts/lg.svg"
+  },
+  "node_modules/lightgallery/fonts/lg.ttf": {
+    "file": "assets/lg-oyjwlqP2.ttf",
+    "src": "node_modules/lightgallery/fonts/lg.ttf"
+  },
+  "node_modules/lightgallery/fonts/lg.woff": {
+    "file": "assets/lg-CosQH4Cu.woff",
+    "src": "node_modules/lightgallery/fonts/lg.woff"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DT9mrmAM.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/editor-style.css": {
+    "file": "assets/editor-style-Dt1ASWHG.css",
+    "src": "resources/css/editor-style.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-Kv8tQpVh.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/lego-scene.js"
+    ],
+    "css": [
+      "assets/app-CDEZs4Bj.css"
+    ],
+    "assets": [
+      "assets/lg-oyjwlqP2.ttf",
+      "assets/lg-CosQH4Cu.woff",
+      "assets/lg-B0dIV2BS.svg"
+    ]
+  },
+  "resources/js/lego-scene.js": {
+    "file": "assets/lego-scene-DgPdgQ9s.js",
+    "name": "lego-scene",
+    "src": "resources/js/lego-scene.js",
+    "isDynamicEntry": true
+  }
+}
