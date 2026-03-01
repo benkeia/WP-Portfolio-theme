@@ -12,17 +12,17 @@
     "src": "node_modules/lightgallery/fonts/lg.woff"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DGw40CHV.css",
+    "file": "assets/app-Bqu25OwA.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/editor-style.css": {
-    "file": "assets/editor-style-BSjFdmUO.css",
+    "file": "assets/editor-style-DJcfhHZs.css",
     "src": "resources/css/editor-style.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bhd3gbgu.js",
+    "file": "assets/app-XQmYfFuY.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

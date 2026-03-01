@@ -75,6 +75,13 @@ function destroyLegoScene() {
     }
 }
 
+// --- GUARD: évite la double initialisation (ex: LiteSpeed VM injection) ---
+if (window.__barbaInitialized) {
+    console.warn('[Barba] Already initialized, skipping duplicate execution.');
+    // Rien d'autre à faire - on quitte proprement
+} else {
+    window.__barbaInitialized = true;
+    
 // --- INITIALIZATION ---
 ensureGridOverlay();
 initTypewriter();
@@ -275,5 +282,7 @@ barba.init({
     }
   }]
 });
+
+} // end __barbaInitialized guard
 
 } // End Desktop
