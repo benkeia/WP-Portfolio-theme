@@ -164,10 +164,8 @@ if (!window.__barbaInitialized) {
         // 3. LEAVE : On cache l'ancienne page avec l'overlay
         async leave(data) {
           console.log('🛑 1. LEAVE : La grille monte — fetch de la nouvelle page en cours...');
-          // Cache immédiatement l'ancien container pour qu'il ne soit plus visible
-          // quand la grille commencera à se retirer dans enter().
-          gsap.set(data.current.container, { autoAlpha: 0 });
-          
+          // On NE cache PAS data.current.container : la grille s'anime par-dessus la Page 1.
+          // La cacher avant que la grille soit complète créerait un "trou noir" visible.
           ensureGridOverlay();
           const container = document.querySelector(TRANSITION_EL);
           gsap.set(container, { display: "grid" });
@@ -189,8 +187,10 @@ if (!window.__barbaInitialized) {
           window.scrollTo(0, 0);
           initHeroTextResize(); 
           
-          // On cache la nouvelle page pour qu'elle n'apparaisse pas d'un coup quand la grille partira
-          gsap.set(data.next.container, { autoAlpha: 0, y: 20 });
+          // La grille couvre l'écran — la Page 2 peut être à autoAlpha:1 en dessous.
+          // Pas besoin de la cacher : personne ne la voit derrière le rideau.
+          // Le y:20 donne un petit effet de remontée quand la grille se lève.
+          gsap.set(data.next.container, { autoAlpha: 1, y: 20 });
         },
 
         // 5. ENTER : L'overlay s'en va, la nouvelle page apparaît
@@ -208,13 +208,13 @@ if (!window.__barbaInitialized) {
               onComplete: () => gsap.set(container, { display: "none" })
           });
 
-          // Le contenu apparaît en douceur
+          // La Page 2 est déjà à autoAlpha:1 sous la grille.
+          // On anime seulement le y pour un effet de remontée fluide.
           tl.to(data.next.container, {
-              autoAlpha: 1,
               y: 0,
               duration: 0.5,
               ease: "power2.out"
-          }, "-=0.2");
+          }, "-=0.25");
 
           return tl;
         },
