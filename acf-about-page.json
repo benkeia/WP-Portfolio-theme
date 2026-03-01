@@ -1,0 +1,396 @@
+[
+    {
+        "key": "group_about_page",
+        "title": "About Page - Configuration",
+        "fields": [
+            {
+                "key": "field_about_name_part_1",
+                "label": "Nom (Partie 1)",
+                "name": "about_name_part_1",
+                "type": "text",
+                "instructions": "Première partie du nom pour l'animation (ex: Baptiste)",
+                "default_value": "Baptiste",
+                "placeholder": "Baptiste"
+            },
+            {
+                "key": "field_about_name_part_2",
+                "label": "Nom (Partie 2)",
+                "name": "about_name_part_2",
+                "type": "text",
+                "instructions": "Deuxième partie du nom pour l'animation (ex: Saegaert)",
+                "default_value": "Saegaert",
+                "placeholder": "Saegaert"
+            },
+            {
+                "key": "field_about_subtitle",
+                "label": "Sous-titre Hero",
+                "name": "about_subtitle",
+                "type": "text",
+                "instructions": "Sous-titre qui apparaît dans l'animation",
+                "default_value": "Développeur Full Stack",
+                "placeholder": "Développeur Full Stack"
+            },
+            {
+                "key": "field_about_hero_image",
+                "label": "Image Hero",
+                "name": "about_hero_image",
+                "type": "image",
+                "instructions": "Image de fond pour la section hero (recommandé: 1920x1080px)",
+                "return_format": "array",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_show_skills_section",
+                "label": "Afficher la section Compétences",
+                "name": "show_skills_section",
+                "type": "true_false",
+                "default_value": 1,
+                "ui": 1
+            },
+            {
+                "key": "field_skills_title",
+                "label": "Titre Section Compétences",
+                "name": "skills_title",
+                "type": "text",
+                "default_value": "Compétences & Technologies",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_skills_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_skills_categories",
+                "label": "Catégories de compétences",
+                "name": "skills_categories",
+                "type": "repeater",
+                "layout": "block",
+                "button_label": "Ajouter une catégorie",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_skills_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "sub_fields": [
+                    {
+                        "key": "field_category_icon",
+                        "label": "Icône (Emoji)",
+                        "name": "category_icon",
+                        "type": "text",
+                        "placeholder": "💻"
+                    },
+                    {
+                        "key": "field_category_name",
+                        "label": "Nom de la catégorie",
+                        "name": "category_name",
+                        "type": "text",
+                        "placeholder": "Frontend"
+                    },
+                    {
+                        "key": "field_skills_list",
+                        "label": "Liste des compétences",
+                        "name": "skills_list",
+                        "type": "repeater",
+                        "layout": "table",
+                        "button_label": "Ajouter une compétence",
+                        "sub_fields": [
+                            {
+                                "key": "field_skill_name",
+                                "label": "Nom",
+                                "name": "skill_name",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_show_timeline_section",
+                "label": "Afficher la section Parcours",
+                "name": "show_timeline_section",
+                "type": "true_false",
+                "default_value": 1,
+                "ui": 1
+            },
+            {
+                "key": "field_timeline_title",
+                "label": "Titre Section Parcours",
+                "name": "timeline_title",
+                "type": "text",
+                "default_value": "Mon parcours",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_timeline_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_timeline_items",
+                "label": "Éléments du parcours",
+                "name": "timeline_items",
+                "type": "repeater",
+                "layout": "block",
+                "button_label": "Ajouter une étape",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_timeline_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "sub_fields": [
+                    {
+                        "key": "field_timeline_date",
+                        "label": "Date",
+                        "name": "date",
+                        "type": "text",
+                        "placeholder": "2023 - Présent"
+                    },
+                    {
+                        "key": "field_timeline_title",
+                        "label": "Titre",
+                        "name": "title",
+                        "type": "text",
+                        "placeholder": "Développeur Full Stack"
+                    },
+                    {
+                        "key": "field_timeline_company",
+                        "label": "Entreprise / Organisation",
+                        "name": "company",
+                        "type": "text",
+                        "placeholder": "Nom de l'entreprise"
+                    },
+                    {
+                        "key": "field_timeline_description",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea",
+                        "rows": 3
+                    }
+                ]
+            },
+            {
+                "key": "field_show_values_section",
+                "label": "Afficher la section Valeurs",
+                "name": "show_values_section",
+                "type": "true_false",
+                "default_value": 1,
+                "ui": 1
+            },
+            {
+                "key": "field_values_title",
+                "label": "Titre Section Valeurs",
+                "name": "values_title",
+                "type": "text",
+                "default_value": "Valeurs & Approche",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_values_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_values_items",
+                "label": "Valeurs",
+                "name": "values_items",
+                "type": "repeater",
+                "layout": "block",
+                "button_label": "Ajouter une valeur",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_values_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "sub_fields": [
+                    {
+                        "key": "field_value_icon",
+                        "label": "Icône (Emoji)",
+                        "name": "value_icon",
+                        "type": "text",
+                        "placeholder": "🎯"
+                    },
+                    {
+                        "key": "field_value_title",
+                        "label": "Titre",
+                        "name": "value_title",
+                        "type": "text",
+                        "placeholder": "Qualité du code"
+                    },
+                    {
+                        "key": "field_value_description",
+                        "label": "Description",
+                        "name": "value_description",
+                        "type": "textarea",
+                        "rows": 3
+                    }
+                ]
+            },
+            {
+                "key": "field_show_cta_section",
+                "label": "Afficher la section CTA",
+                "name": "show_cta_section",
+                "type": "true_false",
+                "default_value": 1,
+                "ui": 1
+            },
+            {
+                "key": "field_cta_title",
+                "label": "Titre CTA",
+                "name": "cta_title",
+                "type": "text",
+                "default_value": "Travaillons ensemble",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_cta_description",
+                "label": "Description CTA",
+                "name": "cta_description",
+                "type": "textarea",
+                "rows": 2,
+                "default_value": "Vous avez un projet en tête ? Discutons-en autour d'un café (virtuel ou réel).",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_cta_primary_button_text",
+                "label": "Texte bouton principal",
+                "name": "cta_primary_button_text",
+                "type": "text",
+                "default_value": "Me contacter",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_cta_primary_button_link",
+                "label": "Lien bouton principal",
+                "name": "cta_primary_button_link",
+                "type": "url",
+                "placeholder": "#contact",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_cta_secondary_button_text",
+                "label": "Texte bouton secondaire",
+                "name": "cta_secondary_button_text",
+                "type": "text",
+                "default_value": "Voir mes projets",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_cta_secondary_button_link",
+                "label": "Lien bouton secondaire",
+                "name": "cta_secondary_button_link",
+                "type": "url",
+                "placeholder": "/projet",
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_show_cta_section",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "field_about_additional_sections",
+                "label": "Sections additionnelles",
+                "name": "about_additional_sections",
+                "type": "repeater",
+                "layout": "block",
+                "button_label": "Ajouter une section",
+                "sub_fields": [
+                    {
+                        "key": "field_section_title",
+                        "label": "Titre",
+                        "name": "section_title",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_section_content",
+                        "label": "Contenu",
+                        "name": "section_content",
+                        "type": "wysiwyg",
+                        "tabs": "all",
+                        "toolbar": "full"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-about.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "active": true
+    }
+]

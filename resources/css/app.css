@@ -1,0 +1,185 @@
+
+@import 'tailwindcss';
+@import './theme.css';
+@import './utilities.css';
+@import './custom.css' layer(utilities);
+@import './page-transition.css';
+
+/* FONTS */
+@font-face {
+  font-family: 'Wikolia Pixel';
+  src: url('/wp-content/themes/Portfolio/resources/font/wikoliapixel-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Sources du Thème (Indispensable pour que Tailwind voit tes fichiers PHP/JS en prod) */
+@source '../../*.php';
+@source '../../inc/**/*.php';
+@source '../../template-parts/**/*.php';
+@source '../../blocks/**/*.{php,js,json}';
+@source '../../resources/js/**/*.js';
+
+/* Sources Vendor (TailPress) */
+@source '../../vendor/tailpress/framework/**/*.php';
+@source '../../vendor/tailpress/framework/**/**/*.php';
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-zinc-200, currentColor);
+  }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Le Rideau */
+.site-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #171717; /* La même couleur que ton fond de scène Three.js */
+    z-index: 9999; /* Au-dessus de tout */
+    pointer-events: all;
+    
+    /* Failsafe CSS pur : disparait après 3s si le JS ne l'a pas fait avant */
+    animation: fadeOutLoader 0.5s forwards;
+    animation-delay: 3s; 
+}
+
+@keyframes fadeOutLoader {
+    to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Ton Container Barba */
+[data-barba="container"] {
+    /* PAS de display: none, PAS de visibility: hidden. 
+       On le laisse visible pour le navigateur, caché pour l'œil humain par le loader. */
+    opacity: 1; 
+}
+
+/* Optionnel : Si tu veux un loader simple en attendant le JS */
+body {
+    background-color: #171717; /* Assure-toi que le fond match ta scène */
+}
+
+/* ========================================================================== */
+/* DESIGN SYSTEM - Styles pour les blocs */
+/* ========================================================================== */
+
+/* Prose Custom - Style pour le contenu WYSIWYG */
+.prose-custom p {
+    margin-bottom: 1.5em;
+}
+
+.prose-custom strong {
+    color: white;
+    font-weight: 500;
+}
+
+.prose-custom h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+}
+
+.prose-custom ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.prose-custom li {
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+}
+
+/* Container pour les embeds vidéo (YouTube, Vimeo, etc.) */
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================================================== */
+/* FILTRES DE PROJETS - Système de tri/filtrage dynamique */
+/* ========================================================================== */
+
+.filter-group {
+    /* Conteneur pour chaque groupe de filtres */
+}
+
+.filter-btn {
+    @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer select-none;
+    @apply bg-neutral-800 text-neutral-400 border border-neutral-700;
+    @apply hover:bg-neutral-700 hover:text-white hover:border-neutral-600;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-btn.active {
+    @apply bg-neutral-100 text-neutral-900 border-neutral-100;
+    @apply hover:bg-white hover:text-neutral-950;
+}
+
+.filter-btn .count {
+    @apply text-xs opacity-70 ml-1;
+}
+
+.filter-btn.active .count {
+    @apply opacity-100 font-medium;
+}
+
+/* Animation des projets */
+.project-card {
+    /* La propriété display sera gérée par JS */
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+.project-card[style*="display: none"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Amélioration de la grille pour les animations */
+#projects-grid {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+}

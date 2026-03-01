@@ -1,0 +1,42 @@
+{
+    "key": "group_65b3e414e8b1d",
+    "title": "Champs pour Expériences",
+    "fields": [
+        {
+            "key": "field_65b3e41ce8b1e",
+            "label": "Intervalle de dates",
+            "name": "date_range",
+            "type": "text",
+            "instructions": "Ex: janvier 2023 – juillet 2024",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "experience"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

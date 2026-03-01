@@ -1,0 +1,19 @@
+/*
+Theme Name: Portfolio
+Theme URI: https://github.com/tailpress/tailpress
+Author: Baptiste Saegaert
+Author URI: https://tailpress.io
+Description: A WordPress theme made with TailPress.
+Version: 0.1.0
+License: MIT
+License URI: https://github.com/tailpress/tailpress/blob/master/LICENSE
+Text Domain: Portfolio
+/* Import de la police Wikolia Pixel */
+@font-face {
+	font-family: 'Wikolia_Pixel';
+	src: url('resources/font/wikoliapixel-regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+*/

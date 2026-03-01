@@ -1,0 +1,109 @@
+{
+    "key": "group_footer_settings",
+    "title": "Pied de page (Footer)",
+    "fields": [
+        {
+            "key": "field_footer_social_repeater",
+            "label": "Réseaux Sociaux",
+            "name": "footer_socials",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Ajouter un réseau",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_social_name",
+                    "label": "Nom du réseau",
+                    "name": "network_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Utilisé pour l'accessibilité (attribut title\/aria-label). Ex: LinkedIn, GitHub.",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_footer_social_repeater"
+                },
+                {
+                    "key": "field_footer_social_url",
+                    "label": "Lien URL",
+                    "name": "network_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_footer_social_repeater"
+                },
+                {
+                    "key": "field_footer_social_icon_svg",
+                    "label": "Code SVG de l'icône",
+                    "name": "network_icon_svg",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Collez le code <svg>...<\/svg> ici. Vous pouvez ajouter des classes Tailwind comme 'w-5 h-5' directement dans la balise.",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "default_value": "",
+                    "new_lines": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_footer_social_repeater"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1770977282
+}

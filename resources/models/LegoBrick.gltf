@@ -1,0 +1,91 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v4.2.1",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 3144,
+      "max": [
+        7.960000038146973,
+        11.399999618530273,
+        7.960000038146973
+      ],
+      "min": [
+        -7.960000038146973,
+        0.019999999552965164,
+        -7.960000038146973
+      ],
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 3144,
+      "bufferView": 0,
+      "byteOffset": 12
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 75456,
+      "byteStride": 24,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "buffer.bin",
+      "byteLength": 75456
+    }
+  ],
+  "materials": [
+    {
+      "name": "MB_1",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "mode": 4,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "empty_2",
+      "children": [
+        1
+      ]
+    },
+    {
+      "name": "o Part.1",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "empty_1",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

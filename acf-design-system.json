@@ -1,0 +1,509 @@
+[
+    {
+        "key": "group_design_system_projet",
+        "title": "Builder Projet (Design System)",
+        "fields": [
+            {
+                "key": "field_tab_header",
+                "label": "En-tête Projet",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_sous_titre",
+                "label": "Sous-titre",
+                "name": "sous_titre",
+                "type": "text",
+                "instructions": "Ex: Platformer 3D Atmosphérique",
+                "required": 0,
+                "conditional_logic": 0,
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_role",
+                "label": "Rôle",
+                "name": "role",
+                "type": "text",
+                "instructions": "Ex: Lead Dev Unity",
+                "required": 0,
+                "conditional_logic": 0,
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_stack",
+                "label": "Stack Technique",
+                "name": "stack",
+                "type": "text",
+                "instructions": "Ex: Unity, C#, Blender",
+                "required": 0,
+                "conditional_logic": 0,
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_annee",
+                "label": "Année",
+                "name": "annee",
+                "type": "text",
+                "instructions": "Ex: 2026",
+                "required": 0,
+                "conditional_logic": 0,
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_image_hero",
+                "label": "Image Hero",
+                "name": "image_hero",
+                "type": "image",
+                "instructions": "L'image de fond en haut de page",
+                "required": 0,
+                "conditional_logic": 0,
+                "return_format": "id",
+                "preview_size": "medium",
+                "library": "all"
+            },
+            {
+                "key": "field_tab_builder",
+                "label": "Contenu (Builder)",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_page_builder",
+                "label": "Constructeur de Page",
+                "name": "page_builder",
+                "type": "flexible_content",
+                "instructions": "Ajoutez les blocs pour construire votre page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "layout_bloc_pitch": {
+                        "key": "layout_bloc_pitch",
+                        "name": "bloc_pitch",
+                        "label": "Bloc Pitch (Histoire + Chiffres)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_pitch_titre",
+                                "label": "Titre Section",
+                                "name": "titre",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "key": "field_pitch_desc",
+                                "label": "Description",
+                                "name": "description",
+                                "type": "wysiwyg",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 0
+                            },
+                            {
+                                "key": "field_pitch_chiffres",
+                                "label": "Chiffres Clés",
+                                "name": "chiffres_cles",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "layout": "table",
+                                "button_label": "Ajouter un chiffre",
+                                "min": 0,
+                                "max": 0,
+                                "sub_fields": [
+                                    {
+                                        "key": "field_chiffre_val",
+                                        "label": "Chiffre",
+                                        "name": "chiffre",
+                                        "type": "text",
+                                        "instructions": "Ex: 180h+",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "key": "field_chiffre_label",
+                                        "label": "Label",
+                                        "name": "label",
+                                        "type": "text",
+                                        "instructions": "Ex: De développement",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_tech": {
+                        "key": "layout_bloc_tech",
+                        "name": "bloc_tech",
+                        "label": "Bloc Tech (Cartes Expertise)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_tech_titre",
+                                "label": "Titre Section",
+                                "name": "titre",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "key": "field_tech_cartes",
+                                "label": "Cartes",
+                                "name": "cartes",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "layout": "row",
+                                "button_label": "Ajouter une carte",
+                                "min": 0,
+                                "max": 0,
+                                "sub_fields": [
+                                    {
+                                        "key": "field_carte_icone",
+                                        "label": "Icône (Emoji)",
+                                        "name": "icone",
+                                        "type": "text",
+                                        "instructions": "Ex: 🎮",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "key": "field_carte_titre",
+                                        "label": "Titre",
+                                        "name": "titre",
+                                        "type": "text",
+                                        "instructions": "Ex: Gameplay C#",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "key": "field_carte_desc",
+                                        "label": "Description",
+                                        "name": "description",
+                                        "type": "textarea",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "rows": 3
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_galerie": {
+                        "key": "layout_bloc_galerie",
+                        "name": "bloc_galerie",
+                        "label": "Bloc Galerie (Bento)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_gal_titre",
+                                "label": "Titre Section",
+                                "name": "titre",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "key": "field_gal_affiche",
+                                "label": "Affiche / Image Mise en avant",
+                                "name": "affiche",
+                                "type": "image",
+                                "instructions": "La grande image à gauche",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "id",
+                                "preview_size": "medium",
+                                "library": "all"
+                            },
+                            {
+                                "key": "field_gal_images",
+                                "label": "Galerie",
+                                "name": "images",
+                                "type": "gallery",
+                                "instructions": "Les autres images de la grille",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "id",
+                                "preview_size": "medium",
+                                "library": "all",
+                                "min": 0,
+                                "max": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_video": {
+                        "key": "layout_video",
+                        "name": "video",
+                        "label": "Bloc Vidéo",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_vid_type",
+                                "label": "Type de vidéo",
+                                "name": "type",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "file": "Fichier uploadé",
+                                    "embed": "Embed (YouTube, Vimeo...)"
+                                },
+                                "default_value": "embed",
+                                "return_format": "value",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 1,
+                                "ajax": 0,
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_vid_file",
+                                "label": "Fichier vidéo",
+                                "name": "video_file",
+                                "type": "file",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_vid_type",
+                                            "operator": "==",
+                                            "value": "file"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "array",
+                                "library": "all",
+                                "mime_types": "mp4,mov,webm"
+                            },
+                            {
+                                "key": "field_vid_embed",
+                                "label": "Code Embed",
+                                "name": "video_embed",
+                                "type": "oembed",
+                                "instructions": "Collez l'URL YouTube, Vimeo, etc.",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_vid_type",
+                                            "operator": "==",
+                                            "value": "embed"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "key": "field_vid_poster",
+                                "label": "Image de couverture",
+                                "name": "poster",
+                                "type": "image",
+                                "instructions": "Pour les fichiers vidéo uploadés",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_vid_type",
+                                            "operator": "==",
+                                            "value": "file"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "id",
+                                "preview_size": "medium",
+                                "library": "all"
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_texte": {
+                        "key": "layout_bloc_texte",
+                        "name": "bloc_texte",
+                        "label": "Bloc Texte Simple",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_texte_contenu",
+                                "label": "Contenu",
+                                "name": "contenu",
+                                "type": "wysiwyg",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 0,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "min": "",
+                "max": "",
+                "button_label": "Ajouter un bloc"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "projet"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content"
+        ],
+        "active": true,
+        "description": "Champs pour le portfolio Design System",
+        "show_in_rest": 0
+    }
+]

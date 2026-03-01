@@ -1,0 +1,109 @@
+/* 404 Confetti Animation Styles */
+
+/* Hand cursor styles */
+.confetti-hand {
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 30px;
+  z-index: 40;
+  will-change: transform, opacity;
+}
+
+.confetti-hand small {
+  left: -60%;
+  position: absolute;
+  top: 20px;
+  width: 200%;
+  font-size: 0.75rem;
+  color: #fbbf24;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Hand images */
+.confetti-drag,
+.confetti-rock {
+  position: absolute;
+  z-index: 40;
+  max-width: 141%;
+  opacity: 0;
+  right: 1px;
+  top: -22px;
+  width: 131%;
+}
+
+.confetti-drag {
+  opacity: 1;
+}
+
+.confetti-handle {
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: -40px;
+  width: 100%;
+}
+
+/* Canvas and proxy */
+.confetti-canvas {
+  z-index: -1;
+}
+
+.confetti-canvas,
+.confetti-proxy {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+}
+
+.confetti-proxy {
+  z-index: 30;
+}
+
+/* Explosion images */
+.explosion-img {
+  will-change: transform, opacity;
+}
+
+/* Preload containers - hidden */
+.image-preload,
+.explosion-preload {
+  position: absolute;
+  left: -9999px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Container for the interactive area */
+.confetti-404-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Selection disabled for smooth interaction */
+.confetti-404-container * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Touch device adjustments */
+@media (hover: none) and (pointer: coarse) {
+  .confetti-hand {
+    display: none;
+  }
+  
+  .confetti-404-container {
+    cursor: pointer;
+  }
+}

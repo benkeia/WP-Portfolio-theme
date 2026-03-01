@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+.tt-page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  z-index: 99999;
+  pointer-events: none;
+}
+.tt-ptr-item {
+  background-color: #6047B8;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}

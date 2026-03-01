@@ -1,0 +1,26 @@
+
+# Dépendances et build
+/node_modules
+/dist
+/vendor
+
+# IDE et outils
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires et logs
+*.log
+*.tmp
+
+# Fichiers sensibles
+.env
+
+# Exports ACF/SCF (à versionner)
+!acf-json/
