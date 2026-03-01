@@ -238,14 +238,16 @@ add_action('wp_enqueue_scripts', function () {
     } else {
         // En production, charge le JS/CSS buildé
         $dist_dir = get_template_directory_uri() . '/dist/assets/';
+        $theme_version = wp_get_theme()->get('Version');
+        
         foreach (glob(get_template_directory() . '/dist/assets/app-*.js') as $file) {
             $basename = basename($file);
-            wp_enqueue_script('portfolio-app', $dist_dir . $basename, [], null, true);
+            wp_enqueue_script('portfolio-app', $dist_dir . $basename, [], $theme_version, true);
             break;
         }
         foreach (glob(get_template_directory() . '/dist/assets/app-*.css') as $file) {
             $basename = basename($file);
-            wp_enqueue_style('portfolio-style', $dist_dir . $basename, [], null);
+            wp_enqueue_style('portfolio-style', $dist_dir . $basename, [], $theme_version);
             break;
         }
     }
