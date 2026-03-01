@@ -1,6 +1,6 @@
 
 import barba from "@barba/core";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { initTypewriter } from "./typewritter.js";
 import { initHeroTextResize, cleanupFitty } from "./hero-text-resize.js";
 import { initTextReveal, cleanupTextReveal } from "./text-reveal.js";
@@ -154,30 +154,26 @@ barba.init({
           const metas = data.next.container.querySelectorAll('#typewriter, .grid p');
 
           if (titleTarget) {
-              tl.from(titleTarget, {
-                  y: 50,
-                  autoAlpha: 0,
-                  duration: 1,
-                  ease: "power3.out"
-              }, "-=0.6");
+              tl.fromTo(titleTarget, 
+                  { y: 50, autoAlpha: 0 },
+                  { y: 0, autoAlpha: 1, duration: 1, ease: "power3.out" }, 
+                  "-=0.6"
+              );
           }
 
           if (metas.length > 0) {
-              tl.from(metas, {
-                  y: 25,
-                  autoAlpha: 0,
-                  duration: 0.7,
-                  stagger: 0.12,
-                  ease: "power2.out"
-              }, "-=0.8");
+              tl.fromTo(metas, 
+                  { y: 25, autoAlpha: 0 },
+                  { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12, ease: "power2.out" }, 
+                  "-=0.8"
+              );
           }
       } else {
-          tl.from(data.next.container, {
-              y: 30,
-              autoAlpha: 0,
-              duration: 0.7,
-              ease: "power2.out"
-          }, "-=0.5");
+          tl.fromTo(data.next.container, 
+              { y: 30, autoAlpha: 0 },
+              { y: 0, autoAlpha: 1, duration: 0.7, ease: "power2.out" }, 
+              "-=0.5"
+          );
       }
     },
     

@@ -236,19 +236,29 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('portfolio-app', 'http://localhost:3000/resources/js/app.js', [], null, true);
         wp_enqueue_style('portfolio-style', 'http://localhost:3000/resources/css/app.css', [], null);
     } else {
-        // En production, charge le JS/CSS buildé
-        $dist_dir = get_template_directory_uri() . '/dist/assets/';
+        // En production, lire le manifest Vite pour avoir les vrais fichiers
+        $manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
         $theme_version = wp_get_theme()->get('Version');
         
-        foreach (glob(get_template_directory() . '/dist/assets/app-*.js') as $file) {
-            $basename = basename($file);
-            wp_enqueue_script('portfolio-app', $dist_dir . $basename, [], $theme_version, true);
-            break;
-        }
-        foreach (glob(get_template_directory() . '/dist/assets/app-*.css') as $file) {
-            $basename = basename($file);
-            wp_enqueue_style('portfolio-style', $dist_dir . $basename, [], $theme_version);
-            break;
+        if (file_exists($manifest_path)) {
+            $manifest = json_decode(file_get_contents($manifest_path), true);
+            
+            // Fichier JS principal
+            if (isset($manifest['resources/js/app.js']['file'])) {
+                $js_file = $manifest['resources/js/app.js']['file'];
+                wp_enqueue_script('portfolio-app', get_template_directory_uri() . '/dist/' . $js_file, [], $theme_version, true);
+            }
+            
+            // Fichiers CSS (Il y a souvent 2 CSS : celui du Theme et celui importé par JS genre LightGallery)
+            if (isset($manifest['resources/css/app.css']['file'])) {
+                $css_file = $manifest['resources/css/app.css']['file'];
+                wp_enqueue_style('portfolio-style', get_template_directory_uri() . '/dist/' . $css_file, [], $theme_version);
+            }
+            if (isset($manifest['resources/js/app.js']['css']) && is_array($manifest['resources/js/app.js']['css'])) {
+                foreach ($manifest['resources/js/app.js']['css'] as $i => $css_file) {
+                    wp_enqueue_style('portfolio-app-deps-' . $i, get_template_directory_uri() . '/dist/' . $css_file, [], $theme_version);
+                }
+            }
         }
     }
 });

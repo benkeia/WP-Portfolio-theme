@@ -1,7 +1,35 @@
 import './page-transition.js';
 import { initTypewriter } from './typewritter.js';
 import { initAboutReveal } from './about-reveal.js';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+
+// Sécurité Globale : Forcer la visibilité peu importe ce qui plante
+const SAFETY_TIMEOUT = 2500;
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        // Enlever le site-loader
+        const loader = document.querySelector('.site-loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
+            setTimeout(() => loader.remove(), 500);
+        }
+
+        // Forcer l'affichage de Barba en cas de crash
+        const barbaContainer = document.querySelector('[data-barba="container"]');
+        if (barbaContainer) {
+            barbaContainer.style.opacity = '1';
+            barbaContainer.style.visibility = 'visible';
+            barbaContainer.style.transform = 'translate3d(0, 0, 0)';
+        }
+
+        // Enlever le grid transition s'il est resté bloqué
+        const gridContainer = document.querySelector('.tt-page-transition');
+        if (gridContainer) {
+            gridContainer.style.display = 'none';
+        }
+    }, SAFETY_TIMEOUT);
+});
 
 // Sécurité : Force la suppression du loader si le JS plante ou met trop de temps
 // Cela garantit que le site est toujours accessible, même sans animations.
