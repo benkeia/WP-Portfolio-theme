@@ -104,6 +104,7 @@ if (!window.__barbaInitialized) {
     // --- BARBA CONFIG (DESKTOP) ---
     barba.init({
       debug: true,
+      timeout: 7000, // Défaut Barba = 2000ms. Augmenté pour WP/Hostinger qui peut être lent.
       
       prevent: ({ el }) => {
         return el.classList.contains('no-barba') || el.closest('#wpadminbar'); 
@@ -162,6 +163,7 @@ if (!window.__barbaInitialized) {
 
         // 3. LEAVE : On cache l'ancienne page avec l'overlay
         async leave(data) {
+          console.log('🛑 1. LEAVE : La grille monte — fetch de la nouvelle page en cours...');
           ensureGridOverlay();
           const container = document.querySelector(TRANSITION_EL);
           gsap.set(container, { display: "grid" });
@@ -178,6 +180,7 @@ if (!window.__barbaInitialized) {
 
         // 4. BEFORE ENTER : Le DOM a été swappé en sous-marin, on prépare la nouvelle page
         beforeEnter(data) {
+          console.log('✅ 2. DOM SWAPPÉ : La page 2 est dans le DOM, la page 1 n\'existe plus. Namespace :', data.next.namespace);
           updateActiveMenu(data.next.url.href);
           window.scrollTo(0, 0);
           initHeroTextResize(); 
@@ -188,6 +191,7 @@ if (!window.__barbaInitialized) {
 
         // 5. ENTER : L'overlay s'en va, la nouvelle page apparaît
         async enter(data) {
+          console.log('🟢 3. ENTER : La grille redescend — durée serveur OK.');
           const container = document.querySelector(TRANSITION_EL);
           const tl = gsap.timeline();
 
