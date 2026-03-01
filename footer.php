@@ -74,7 +74,6 @@
 
     </div>
 </footer>
-<div class="tt-page-transition"></div>
 <?php wp_footer(); ?>
 </body>
 

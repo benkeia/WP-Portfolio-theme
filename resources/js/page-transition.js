@@ -149,12 +149,15 @@ if (!window.__barbaInitialized) {
         },
         
         // 2. AVANT DE QUITTER : Nettoyage propre
+        // IMPORTANT : chaque cleanup EST dans un try...catch indépendant.
+        // Si un module n'existe pas sur la page courante et lève une erreur,
+        // Barba intercepte l'exception et ABANDONNE la transition → ancien container jamais retiré.
         beforeLeave(data) {
-          destroyLegoScene();
-          cleanupTextReveal();
-          cleanupGallery();
-          cleanupAboutReveal();
-          cleanupFitty();
+          try { destroyLegoScene();   } catch(e) { console.warn('[Barba] destroyLegoScene error:', e); }
+          try { cleanupTextReveal();  } catch(e) { console.warn('[Barba] cleanupTextReveal error:', e); }
+          try { cleanupGallery();     } catch(e) { console.warn('[Barba] cleanupGallery error:', e); }
+          try { cleanupAboutReveal(); } catch(e) { console.warn('[Barba] cleanupAboutReveal error:', e); }
+          try { cleanupFitty();       } catch(e) { console.warn('[Barba] cleanupFitty error:', e); }
         },
 
         // 3. LEAVE : On cache l'ancienne page avec l'overlay
@@ -210,14 +213,16 @@ if (!window.__barbaInitialized) {
 
         // 6. AFTER : Tout est affiché, on relance les mécaniques
         after(data) {
-          initTextReveal();
-          initGallery();
-          initTypewriter();
+          try { initTextReveal(); } catch(e) { console.warn('[Barba] initTextReveal error:', e); }
+          try { initGallery();    } catch(e) { console.warn('[Barba] initGallery error:', e); }
+          try { initTypewriter(); } catch(e) { console.warn('[Barba] initTypewriter error:', e); }
           
-          const aboutReveal = data.next.container.querySelector('#about-reveal');
-          if (aboutReveal) initAboutReveal();
+          try {
+            const aboutReveal = data.next.container.querySelector('#about-reveal');
+            if (aboutReveal) initAboutReveal();
+          } catch(e) { console.warn('[Barba] initAboutReveal error:', e); }
           
-          if (window.initMenuToggle) window.initMenuToggle();
+          try { if (window.initMenuToggle) window.initMenuToggle(); } catch(e) { console.warn('[Barba] initMenuToggle error:', e); }
           
           const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
           const isSlowConnection = connection && (connection.saveData || ['slow-2g', '2g', '3g'].includes(connection.effectiveType));
