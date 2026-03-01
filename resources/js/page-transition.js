@@ -100,7 +100,7 @@ if (window.innerWidth < 768) {
 
 // --- BARBA CONFIG (DESKTOP ONLY) ---
 barba.init({
-  debug: false,
+  debug: true,
   
   prevent: ({ el }) => {
     return el.classList.contains('no-barba') || el.closest('#wpadminbar'); 
