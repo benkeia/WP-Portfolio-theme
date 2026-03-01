@@ -12,7 +12,7 @@
     "src": "node_modules/lightgallery/fonts/lg.woff"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Bqu25OwA.css",
+    "file": "assets/app-Bx7RR4Ye.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -22,7 +22,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bwucz87-.js",
+    "file": "assets/app-CepTwvgs.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

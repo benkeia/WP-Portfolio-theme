@@ -164,6 +164,10 @@ if (!window.__barbaInitialized) {
         // 3. LEAVE : On cache l'ancienne page avec l'overlay
         async leave(data) {
           console.log('🛑 1. LEAVE : La grille monte — fetch de la nouvelle page en cours...');
+          // Cache immédiatement l'ancien container pour qu'il ne soit plus visible
+          // quand la grille commencera à se retirer dans enter().
+          gsap.set(data.current.container, { autoAlpha: 0 });
+          
           ensureGridOverlay();
           const container = document.querySelector(TRANSITION_EL);
           gsap.set(container, { display: "grid" });

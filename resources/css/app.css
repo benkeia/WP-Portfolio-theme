@@ -83,9 +83,10 @@
 
 /* Ton Container Barba */
 [data-barba="container"] {
-    /* PAS de display: none, PAS de visibility: hidden. 
-       On le laisse visible pour le navigateur, caché pour l'œil humain par le loader. */
-    opacity: 1; 
+    /* PAS de display: none, PAS de visibility: hidden, PAS d'opacity.
+       L'opacity est gérée EXCLUSIVEMENT par GSAP dans page-transition.js.
+       Une règle CSS opacity:1 ici aurait une spécificité > inline style de GSAP
+       et rendrait invisible le gsap.set(container, { autoAlpha: 0 }) → bug du saut visuel. */
 }
 
 /* Optionnel : Si tu veux un loader simple en attendant le JS */
