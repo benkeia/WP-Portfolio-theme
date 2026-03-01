@@ -108,6 +108,7 @@ if (window.innerWidth < 768) {
 // --- BARBA CONFIG (DESKTOP ONLY) ---
 barba.init({
   debug: true,
+  sync: true,
   
   prevent: ({ el }) => {
     return el.classList.contains('no-barba') || el.closest('#wpadminbar'); 
@@ -191,22 +192,26 @@ barba.init({
       cleanupGallery();
       cleanupAboutReveal();
       cleanupFitty();
-      
+
+      // Sortir la page courante du flow → évite le flash de Page 1 sous l'overlay
+      gsap.set(data.current.container, {
+        position: "absolute",
+        inset: 0,
+        width: "100%"
+      });
+
       // Grid overlay
       ensureGridOverlay();
       const container = document.querySelector(TRANSITION_EL);
-      gsap.set(container, { display: "grid" }); 
+      gsap.set(container, { display: "grid" });
+      gsap.set(ITEM_CLASS, { autoAlpha: 0 });
 
-      // Animate grid in
-      await gsap.fromTo(ITEM_CLASS, 
-        { autoAlpha: 0 },
-        {
-          autoAlpha: 1,
-          stagger: { amount: 0.35, from: "random", grid: "auto" },
-          duration: 0.35,
-          ease: "power2.inOut"
-        }
-      );
+      return gsap.to(ITEM_CLASS, {
+        autoAlpha: 1,
+        stagger: { amount: 0.3, from: "random", grid: [8, 9] },
+        duration: 0.3,
+        ease: "power2.inOut"
+      });
     },
 
     beforeEnter(data) {
@@ -218,42 +223,27 @@ barba.init({
     },
 
     async enter(data) {
-      // S'assurer que le container est visible AVANT toute animation
-      gsap.set(data.next.container, { 
-          autoAlpha: 1,
-          clearProps: "transform"
-      });
-      
-      // Animate grid out + content in simultanément
       const container = document.querySelector(TRANSITION_EL);
-      
       const tl = gsap.timeline();
-      
-      // Grid disparait
+
+      // Grid disparaît
       tl.to(ITEM_CLASS, {
           autoAlpha: 0,
-          stagger: { amount: 0.25, from: "random", grid: "auto" },
-          duration: 0.3,
+          stagger: { amount: 0.2, from: "random", grid: [8, 9] },
+          duration: 0.25,
           ease: "power3.out",
           onComplete: () => gsap.set(container, { display: "none" })
       });
-      
-      // Contenu apparait (overlap) - fromTo pour être explicite
-      tl.fromTo(data.next.container, 
-          {
-              autoAlpha: 0,
-              y: 20
-          },
-          {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.5,
-              ease: "power2.out"
-          }, 
-          "-=0.2"
-      );
-      
-      await tl;
+
+      // Contenu apparaît - gsap.from gère le 0→1 sans set intermédiaire (évite le micro-flash)
+      tl.from(data.next.container, {
+          autoAlpha: 0,
+          y: 20,
+          duration: 0.5,
+          ease: "power2.out"
+      }, "-=0.2");
+
+      return tl;
     },
 
     after(data) {
