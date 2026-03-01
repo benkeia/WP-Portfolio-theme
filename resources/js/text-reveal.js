@@ -2,9 +2,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+// registerPlugin est idempotent dans GSAP : appeler plusieurs fois est sans danger.
+// On le garde ici comme garde-fou si ce module est jamais chargé hors du contexte app.js.
+gsap.registerPlugin(ScrollTrigger);
 
 export function initTextReveal() {
     // Cleanup des anciennes instances

@@ -16,6 +16,12 @@ export default defineConfig(({ command }) => {
                 allow: ['..']
             }
         },
+        // Force Vite à pré-bundler GSAP en une seule instance partagée.
+        // Sans ça, Rollup peut créer plusieurs copies de GSAP dans le bundle,
+        // causant un "registerPlugin is not a function" en production.
+        optimizeDeps: {
+            include: ['gsap', 'gsap/ScrollTrigger'],
+        },
         build: {
             manifest: true,
             outDir: 'dist',

@@ -1,7 +1,14 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Enregistrement centralisé de TOUS les plugins GSAP.
+// C'est le seul endroit où registerPlugin doit être appelé.
+// Comme gsap est un singleton, ce call est visible par tous les modules.
+gsap.registerPlugin(ScrollTrigger);
+
 import './page-transition.js';
 import { initTypewriter } from './typewritter.js';
 import { initAboutReveal } from './about-reveal.js';
-import { gsap } from 'gsap';
 
 // Sécurité Globale : Forcer la visibilité peu importe ce qui plante
 const SAFETY_TIMEOUT = 2500;
