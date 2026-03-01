@@ -182,14 +182,17 @@ if (!window.__barbaInitialized) {
 
         // 4. BEFORE ENTER : Le DOM a été swappé en sous-marin, on prépare la nouvelle page
         beforeEnter(data) {
-          console.log('✅ 2. DOM SWAPPÉ : La page 2 est dans le DOM, la page 1 n\'existe plus. Namespace :', data.next.namespace);
+          console.log('✅ 2. DOM SWAPPÉ : On tue visuellement la page 1 derrière le rideau.');
+          
+          // LE CORRECTIF EST LÀ : La grille cache l'écran, on fait disparaître la Page 1 du flux.
+          // Elle ne gênera plus la Page 2, et Barba la supprimera proprement à la fin.
+          gsap.set(data.current.container, { display: "none" });
+
           updateActiveMenu(data.next.url.href);
           window.scrollTo(0, 0);
           initHeroTextResize(); 
           
-          // La grille couvre l'écran — la Page 2 peut être à autoAlpha:1 en dessous.
-          // Pas besoin de la cacher : personne ne la voit derrière le rideau.
-          // Le y:20 donne un petit effet de remontée quand la grille se lève.
+          // La Page 2 prend sa place, prête à être révélée
           gsap.set(data.next.container, { autoAlpha: 1, y: 20 });
         },
 
