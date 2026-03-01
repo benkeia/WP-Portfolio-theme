@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 import './page-transition.js';
 import { initTypewriter } from './typewritter.js';
 import { initAboutReveal } from './about-reveal.js';
+import './keypad-404.js';
+import ProjectFilters from './project-filters.js';
 
 // Sécurité Globale : Forcer la visibilité peu importe ce qui plante
 const SAFETY_TIMEOUT = 2500;
@@ -106,5 +108,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const aboutReveal = document.getElementById('about-reveal');
     if (aboutReveal) {
         initAboutReveal();
+    }
+
+    // Initialise les filtres projets si la grille existe
+    if (document.getElementById('projects-grid')) {
+        new ProjectFilters();
     }
 });

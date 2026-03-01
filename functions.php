@@ -176,6 +176,52 @@ function register_projets_cpt()
 }
 add_action('init', 'register_projets_cpt');
 
+function register_projet_taxonomies()
+{
+    // Taxonomie : Domaine
+    register_taxonomy('domaine', 'projet', array(
+        'labels' => array(
+            'name'              => _x('Domaines', 'taxonomy general name', 'tailpress'),
+            'singular_name'     => _x('Domaine', 'taxonomy singular name', 'tailpress'),
+            'search_items'      => __('Search Domaines', 'tailpress'),
+            'all_items'         => __('All Domaines', 'tailpress'),
+            'edit_item'         => __('Edit Domaine', 'tailpress'),
+            'update_item'       => __('Update Domaine', 'tailpress'),
+            'add_new_item'      => __('Add New Domaine', 'tailpress'),
+            'new_item_name'     => __('New Domaine Name', 'tailpress'),
+            'menu_name'         => __('Domaines', 'tailpress'),
+        ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'domaine'),
+        'show_in_rest'      => true,
+    ));
+
+    // Taxonomie : Technologie
+    register_taxonomy('technologie', 'projet', array(
+        'labels' => array(
+            'name'              => _x('Technologies', 'taxonomy general name', 'tailpress'),
+            'singular_name'     => _x('Technologie', 'taxonomy singular name', 'tailpress'),
+            'search_items'      => __('Search Technologies', 'tailpress'),
+            'all_items'         => __('All Technologies', 'tailpress'),
+            'edit_item'         => __('Edit Technologie', 'tailpress'),
+            'update_item'       => __('Update Technologie', 'tailpress'),
+            'add_new_item'      => __('Add New Technologie', 'tailpress'),
+            'new_item_name'     => __('New Technologie Name', 'tailpress'),
+            'menu_name'         => __('Technologies', 'tailpress'),
+        ),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'technologie'),
+        'show_in_rest'      => true,
+    ));
+}
+add_action('init', 'register_projet_taxonomies');
+
 function register_experiences_cpt()
 {
     $labels = array(
