@@ -19,17 +19,12 @@ $pdf_url  = is_array($pdf_file) ? $pdf_file['url'] : $pdf_file;
 
 <body style="margin:0;padding:0;overflow:hidden;">
     <?php if ($pdf_url) : ?>
-        <iframe
-            src="<?php echo esc_url($pdf_url); ?>"
-            style="width:100%;height:100vh;display:block;"
-            frameborder="0"></iframe>
+        <iframe id="pdf-frame" style="width:100%;height:100vh;display:block;" frameborder="0"></iframe>
+        <script>
+            document.getElementById('pdf-frame').src = '<?php echo esc_js($pdf_url); ?>';
+        </script>
     <?php else : ?>
-        <p style="font-family:sans-serif;padding:2rem;">
-            Aucun fichier PDF renseigné.<br>
-            <?php if (current_user_can('administrator')) : ?>
-                <small>Debug — pdf_file : <code><?php var_dump(get_field('pdf_file')); ?></code></small>
-            <?php endif; ?>
-        </p>
+        <p style="font-family:sans-serif;padding:2rem;">Aucun fichier PDF renseigné.</p>
     <?php endif; ?>
 </body>
 
