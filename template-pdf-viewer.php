@@ -24,7 +24,12 @@ $pdf_url  = is_array($pdf_file) ? $pdf_file['url'] : $pdf_file;
             style="width:100%;height:100vh;display:block;"
             frameborder="0"></iframe>
     <?php else : ?>
-        <p style="font-family:sans-serif;padding:2rem;">Aucun fichier PDF renseigné.</p>
+        <p style="font-family:sans-serif;padding:2rem;">
+            Aucun fichier PDF renseigné.<br>
+            <?php if (current_user_can('administrator')) : ?>
+                <small>Debug — pdf_file : <code><?php var_dump(get_field('pdf_file')); ?></code></small>
+            <?php endif; ?>
+        </p>
     <?php endif; ?>
 </body>
 

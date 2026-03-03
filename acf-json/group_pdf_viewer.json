@@ -28,7 +28,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-portfolio-pdf.php"
+                "value": "template-pdf-viewer.php"
             }
         ]
     ],
