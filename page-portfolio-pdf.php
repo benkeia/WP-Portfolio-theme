@@ -1,9 +1,11 @@
 <?php
-
 /**
- * Template pour l'affichage du portfolio PDF
- * Appliqué automatiquement à la page avec le slug "portfolio-pdf"
+ * Template Name: Visionneuse PDF
+ * Template Post Type: page
  */
+
+$pdf_file = get_field('pdf_file');
+$pdf_url  = is_array($pdf_file) ? $pdf_file['url'] : $pdf_file;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -15,10 +17,14 @@
 </head>
 
 <body style="margin:0;padding:0;overflow:hidden;">
-    <iframe
-        src="https://baptiste-saegaert.fr/wp-content/uploads/2026/03/Portfolio-HD.pdf"
-        style="width:100%;height:100vh;display:block;"
-        frameborder="0"></iframe>
+    <?php if ($pdf_url) : ?>
+        <iframe
+            src="<?php echo esc_url($pdf_url); ?>"
+            style="width:100%;height:100vh;display:block;"
+            frameborder="0"></iframe>
+    <?php else : ?>
+        <p style="font-family:sans-serif;padding:2rem;">Aucun fichier PDF renseigné.</p>
+    <?php endif; ?>
 </body>
 
 </html>

@@ -1,0 +1,45 @@
+{
+    "key": "group_pdf_viewer",
+    "title": "Visionneuse PDF",
+    "fields": [
+        {
+            "key": "field_pdf_file",
+            "label": "Fichier PDF",
+            "name": "pdf_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Sélectionnez ou uploadez le fichier PDF à afficher.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-portfolio-pdf.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "modified": 1741046400
+}
