@@ -12,7 +12,9 @@ $project_query = new WP_Query($args);
 <?php if ($project_query->have_posts()) : ?>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mx-auto justify-center items-start">
     <?php while ($project_query->have_posts()) : $project_query->the_post(); ?>
+    <article>
     <a href="<?php the_permalink(); ?>"
+        aria-label="<?php echo esc_attr(get_the_title()); ?>"
         class="bg-neutral-900 flex flex-col items-center rounded-lg overflow-hidden relative w-full mx-auto transition duration-200 hover:border-neutral-700 hover:shadow-lg"
         style="text-decoration: none;">
         <div class="w-full mx-auto flex justify-center">
@@ -36,14 +38,16 @@ $project_query = new WP_Query($args);
                 <?php 
                 $icon = get_field('company_icon');
                 if ($icon) {
+                    $company_name_alt = esc_attr(get_field('company_name') ?: get_the_title());
                     if (is_numeric($icon)) {
                         echo wp_get_attachment_image($icon, 'thumbnail', false, [
                             'class' => 'w-6 h-6 rounded',
-                            'loading' => 'lazy'
+                            'loading' => 'lazy',
+                            'alt'   => $company_name_alt,
                         ]);
                     } else {
                          // Fallback si URL brute (non recommandé mais supporté)
-                        echo '<img src="' . esc_url($icon) . '" alt="Icon" class="w-6 h-6 rounded" loading="lazy" />';
+                        echo '<img src="' . esc_url($icon) . '" alt="' . $company_name_alt . '" class="w-6 h-6 rounded" loading="lazy" />';
                     }
                 }
                 ?>
@@ -52,13 +56,14 @@ $project_query = new WP_Query($args);
                 <?php endif; ?>
             </div>
             <div class="w-full mx-auto flex flex-col items-start">
-                <div class="text-xl font-medium text-neutral-50 leading-6 w-full mx-auto no-underline">
+                <h3 class="text-xl font-medium text-neutral-50 leading-6 w-full mx-auto no-underline m-0">
                     <?php the_title(); ?>
-                </div>
+                </h3>
             </div>
         </div>
         <div class="absolute border border-neutral-800 inset-0 rounded-lg pointer-events-none"></div>
     </a>
+    </article>
     <?php endwhile; ?>
 </div>
 <?php wp_reset_postdata(); ?>

@@ -5,10 +5,10 @@
             <div class="w-full flex justify-center">
                 <div class="w-full mx-auto flex justify-center">
                     <div class="relative w-full flex justify-center">
-                        <span id="name-element"
-                            class="fit block text-neutral-50 font-normal font-['Wikolia_Pixel'] leading-tight sm:whitespace-nowrap drop-shadow-lg">
+                        <h1 id="name-element"
+                            class="fit block text-neutral-50 font-normal font-['Wikolia_Pixel'] leading-tight sm:whitespace-nowrap drop-shadow-lg m-0 p-0">
                             Baptiste Saegaert
-                        </span>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -21,9 +21,9 @@
                 <!-- Colonne gauche : Créatif Polyvalent -->
                 <div class="flex justify-start items-start">
                     <div class="opacity-80">
-                        <div id="typewriter" class="text-neutral-50 text-base font-normal typewriter leading-6">
+                        <p id="typewriter" class="text-neutral-50 text-base font-normal typewriter leading-6 m-0">
                             Créatif Polyvalent
-                        </div>
+                        </p>
                     </div>
                 </div>
 
