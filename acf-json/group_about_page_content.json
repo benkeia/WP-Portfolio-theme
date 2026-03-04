@@ -1,0 +1,240 @@
+{
+    "key": "group_about_page_content",
+    "title": "About Page — Contenu (Design System)",
+    "fields": [
+        {
+            "key": "field_about_tab_hero",
+            "label": "Hero Manifeste",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_hero_subtitle",
+            "label": "Surtitre",
+            "name": "hero_subtitle",
+            "type": "text",
+            "instructions": "Petit label au-dessus du titre. Ex: Creative Developer",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "Creative Developer",
+            "placeholder": "Creative Developer",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_title",
+            "label": "Titre principal",
+            "name": "hero_title",
+            "type": "text",
+            "instructions": "Titre h1 de la page. Ex: Je conçois des expériences web immersives...",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "Je conçois des expériences web immersives, narratives et techniques.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_manifesto",
+            "label": "Manifeste (accroche)",
+            "name": "hero_manifesto",
+            "type": "textarea",
+            "instructions": "Phrase d'accroche sous le titre, ton manifeste créatif.",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "Entre code, motion et identité visuelle, je crée des interfaces qui racontent des histoires.",
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_about_tab_identity",
+            "label": "Qui je suis",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_about_origin",
+            "label": "Origine",
+            "name": "about_origin",
+            "type": "wysiwyg",
+            "instructions": "Parcours d'origine : formation, approche hybride...",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "<p>Diplômé d'un BUT MMI (Métiers du Multimédia et de l'Internet), j'ai développé une approche hybride entre design et développement. Ma curiosité m'a poussé à explorer la 3D, le motion design et le code créatif pour créer des expériences uniques.</p>",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_about_evolution",
+            "label": "Évolution",
+            "name": "about_evolution",
+            "type": "wysiwyg",
+            "instructions": "Comment tu as évolué, les projets marquants, les technologies apprises.",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "<p>De la conception de jeux sous Unity à la création d'identités visuelles immersives, chaque projet m'a permis d'affiner ma vision : créer des expériences qui marquent. WordPress custom, animations GSAP, modélisation 3D... J'ai construit mon expertise sur des projets concrets et ambitieux.</p>",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_about_today",
+            "label": "Aujourd'hui",
+            "name": "about_today",
+            "type": "wysiwyg",
+            "instructions": "Situation actuelle, recherche d'alternance, objectifs.",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "<p>Je recherche une alternance en développement web créatif où je pourrai mettre mon sens du détail et ma passion pour les interfaces narratives au service de projets innovants. Studio, agence ou entreprise tech : l'important est de créer des expériences mémorables.</p>",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_about_tab_skills",
+            "label": "Compétences",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_about_skill_cards",
+            "label": "Cartes de compétences",
+            "name": "about_skill_cards",
+            "type": "repeater",
+            "instructions": "Chaque carte = une catégorie de compétences. La dernière carte peut être en pleine largeur.",
+            "required": 0,
+            "conditional_logic": 0,
+            "layout": "block",
+            "button_label": "Ajouter une catégorie",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_skill_card_icon_svg",
+                    "label": "Icône SVG",
+                    "name": "skill_card_icon_svg",
+                    "type": "textarea",
+                    "instructions": "Colle le code SVG de l'icône (ex: depuis lucide.dev)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "rows": 4,
+                    "new_lines": "",
+                    "parent_repeater": "field_about_skill_cards"
+                },
+                {
+                    "key": "field_skill_card_title",
+                    "label": "Titre de la catégorie",
+                    "name": "skill_card_title",
+                    "type": "text",
+                    "instructions": "Ex: Développement, Design & Direction Artistique, 3D & Motion",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "default_value": "",
+                    "placeholder": "Développement",
+                    "parent_repeater": "field_about_skill_cards"
+                },
+                {
+                    "key": "field_skill_card_items",
+                    "label": "Liste des compétences",
+                    "name": "skill_card_items",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "layout": "table",
+                    "button_label": "Ajouter",
+                    "sub_fields": [
+                        {
+                            "key": "field_skill_card_item_name",
+                            "label": "Compétence",
+                            "name": "skill_item_name",
+                            "type": "text",
+                            "instructions": "Ex: HTML / CSS / JavaScript",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "placeholder": "HTML / CSS / JavaScript",
+                            "parent_repeater": "field_skill_card_items"
+                        }
+                    ],
+                    "parent_repeater": "field_about_skill_cards"
+                },
+                {
+                    "key": "field_skill_card_note",
+                    "label": "Note / Philosophie (italique)",
+                    "name": "skill_card_note",
+                    "type": "text",
+                    "instructions": "Petite phrase en italique en bas de la carte.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "placeholder": "Je privilégie un code maintenable...",
+                    "parent_repeater": "field_about_skill_cards"
+                },
+                {
+                    "key": "field_skill_card_full_width",
+                    "label": "Pleine largeur",
+                    "name": "skill_card_full_width",
+                    "type": "true_false",
+                    "instructions": "Si activé, la carte occupe toute la ligne (ex: 3D & Motion).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "default_value": 0,
+                    "ui": 1,
+                    "parent_repeater": "field_about_skill_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_vision",
+            "label": "Vision & Ambition",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_vision_text",
+            "label": "Texte de vision",
+            "name": "vision_text",
+            "type": "wysiwyg",
+            "instructions": "Texte long exprimant ta philosophie, en grand format typographique.",
+            "required": 0,
+            "conditional_logic": 0,
+            "default_value": "<p>Je crois au pouvoir des expériences immersives qui allient code performant et narration visuelle forte. Mon objectif est de créer des interfaces qui ne se contentent pas d'être fonctionnelles, mais qui racontent une histoire, portent une identité et marquent les esprits.</p><p>Dans un monde digital saturé, je pense que c'est l'attention aux détails, la maîtrise technique et l'audace créative qui font la différence. Chaque projet est une opportunité de repousser les limites et d'apprendre.</p>",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Champs de contenu pour la page About (Design System)",
+    "show_in_rest": false
+}

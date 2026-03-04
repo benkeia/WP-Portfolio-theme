@@ -24,7 +24,7 @@ $pdf_url  = is_array($pdf_file) ? $pdf_file['url'] : $pdf_file;
         <script>
             document.getElementById('pdf-frame').src = '<?php echo esc_js($pdf_url); ?>';
             // Event GA4 custom : ouverture du portfolio PDF
-            window.addEventListener('load', function () {
+            window.addEventListener('load', function() {
                 if (typeof gtag === 'function') {
                     gtag('event', 'portfolio_pdf_opened', {
                         event_category: 'Portfolio',

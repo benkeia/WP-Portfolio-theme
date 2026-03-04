@@ -11,36 +11,36 @@ get_header();
         </section>
 
         <section aria-label="Derniers projets">
-        <div class="w-full mx-auto flex justify-center items-center mt-8 px-4 md:px-24">
-            <div class="w-full max-w-[1200px] mx-auto py-14 flex flex-col justify-center items-center">
-                <div class="w-full mx-auto flex flex-col justify-center items-center gap-6">
-                    <div class="w-full flex flex-row items-center justify-between gap-2 mb-2">
-                        <h2 class="text-neutral-50 text-4xl font-medium leading-[48px] m-0">
-                            Mes derniers projets
-                        </h2>
-                        <a href="<?php echo esc_url(home_url('/projet/')); ?>"
-                            class="group flex flex-row items-center gap-1 cursor-pointer select-none">
-                            <span
-                                class="text-neutral-400 text-xs font-normal uppercase leading-5 group-hover:text-white transition-colors no-underline duration-200">Voir
-                                tout</span>
-                            <span class="inline-flex items-center justify-center">
-                                <svg id="voir-tout-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="#a3a3a3" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right group-hover:stroke-white transition-colors duration-200">
-                                    <path d="M7 7h10v10" />
-                                    <path d="M7 17 17 7" />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                    <div
-                        class="self-stretch rounded-lg flex flex-col justify-center items-center gap-6 overflow-visible">
-                        <?php get_template_part('template-parts/projects'); ?>
+            <div class="w-full mx-auto flex justify-center items-center mt-8 px-4 md:px-24">
+                <div class="w-full max-w-[1200px] mx-auto py-14 flex flex-col justify-center items-center">
+                    <div class="w-full mx-auto flex flex-col justify-center items-center gap-6">
+                        <div class="w-full flex flex-row items-center justify-between gap-2 mb-2">
+                            <h2 class="text-neutral-50 text-4xl font-medium leading-[48px] m-0">
+                                Mes derniers projets
+                            </h2>
+                            <a href="<?php echo esc_url(home_url('/projet/')); ?>"
+                                class="group flex flex-row items-center gap-1 cursor-pointer select-none">
+                                <span
+                                    class="text-neutral-400 text-xs font-normal uppercase leading-5 group-hover:text-white transition-colors no-underline duration-200">Voir
+                                    tout</span>
+                                <span class="inline-flex items-center justify-center">
+                                    <svg id="voir-tout-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="#a3a3a3" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right group-hover:stroke-white transition-colors duration-200">
+                                        <path d="M7 7h10v10" />
+                                        <path d="M7 17 17 7" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                        <div
+                            class="self-stretch rounded-lg flex flex-col justify-center items-center gap-6 overflow-visible">
+                            <?php get_template_part('template-parts/projects'); ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
 
     </div>
