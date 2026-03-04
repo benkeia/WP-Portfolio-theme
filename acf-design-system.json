@@ -478,6 +478,300 @@
                         ],
                         "min": "",
                         "max": ""
+                    },
+                    "layout_bloc_manifeste": {
+                        "key": "layout_bloc_manifeste",
+                        "name": "bloc_manifeste",
+                        "label": "Bloc Manifeste (Hero)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_manifeste_subtitle",
+                                "label": "Surtitre",
+                                "name": "hero_subtitle",
+                                "type": "text",
+                                "instructions": "Ex: Creative Developer",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "Creative Developer",
+                                "placeholder": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_manifeste_title",
+                                "label": "Titre principal",
+                                "name": "hero_title",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "",
+                                "placeholder": "Je conçois des expériences...",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_manifeste_text",
+                                "label": "Accroche / Manifeste",
+                                "name": "hero_manifesto",
+                                "type": "textarea",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "rows": 3,
+                                "new_lines": "br",
+                                "default_value": "",
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_identite": {
+                        "key": "layout_bloc_identite",
+                        "name": "bloc_identite",
+                        "label": "Bloc Identité (Qui je suis)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_identite_section_title",
+                                "label": "Titre de section",
+                                "name": "section_title",
+                                "type": "text",
+                                "instructions": "Titre affiché à gauche",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "Qui je suis",
+                                "placeholder": "Qui je suis",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_identite_origin",
+                                "label": "Sous-section 1 (Origine)",
+                                "name": "about_origin",
+                                "type": "wysiwyg",
+                                "instructions": "Laisser vide pour masquer",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 0
+                            },
+                            {
+                                "key": "field_identite_evolution",
+                                "label": "Sous-section 2 (Évolution)",
+                                "name": "about_evolution",
+                                "type": "wysiwyg",
+                                "instructions": "Laisser vide pour masquer",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 0
+                            },
+                            {
+                                "key": "field_identite_today",
+                                "label": "Sous-section 3 (Aujourd'hui)",
+                                "name": "about_today",
+                                "type": "wysiwyg",
+                                "instructions": "Laisser vide pour masquer",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_competences": {
+                        "key": "layout_bloc_competences",
+                        "name": "bloc_competences",
+                        "label": "Bloc Compétences (Cartes)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_competences_section_title",
+                                "label": "Titre de section",
+                                "name": "section_title",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "Compétences",
+                                "placeholder": "Compétences",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_competences_cards",
+                                "label": "Cartes de compétences",
+                                "name": "about_skill_cards",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "layout": "block",
+                                "button_label": "Ajouter une catégorie",
+                                "min": 0,
+                                "max": 0,
+                                "sub_fields": [
+                                    {
+                                        "key": "field_comp_card_icon_svg",
+                                        "label": "Icône SVG",
+                                        "name": "skill_card_icon_svg",
+                                        "type": "textarea",
+                                        "instructions": "Code SVG (ex: depuis lucide.dev)",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": { "width": "", "class": "", "id": "" },
+                                        "rows": 4,
+                                        "new_lines": "",
+                                        "parent_repeater": "field_competences_cards"
+                                    },
+                                    {
+                                        "key": "field_comp_card_title",
+                                        "label": "Titre",
+                                        "name": "skill_card_title",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": { "width": "", "class": "", "id": "" },
+                                        "default_value": "",
+                                        "placeholder": "Développement",
+                                        "parent_repeater": "field_competences_cards"
+                                    },
+                                    {
+                                        "key": "field_comp_card_items",
+                                        "label": "Liste",
+                                        "name": "skill_card_items",
+                                        "type": "repeater",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": { "width": "", "class": "", "id": "" },
+                                        "layout": "table",
+                                        "button_label": "Ajouter",
+                                        "min": 0,
+                                        "max": 0,
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_comp_item_name",
+                                                "label": "Compétence",
+                                                "name": "skill_item_name",
+                                                "type": "text",
+                                                "instructions": "",
+                                                "required": 1,
+                                                "conditional_logic": 0,
+                                                "wrapper": { "width": "", "class": "", "id": "" },
+                                                "placeholder": "HTML / CSS / JavaScript",
+                                                "parent_repeater": "field_comp_card_items"
+                                            }
+                                        ],
+                                        "parent_repeater": "field_competences_cards"
+                                    },
+                                    {
+                                        "key": "field_comp_card_note",
+                                        "label": "Note (italique)",
+                                        "name": "skill_card_note",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": { "width": "", "class": "", "id": "" },
+                                        "placeholder": "Je privilégie un code maintenable...",
+                                        "parent_repeater": "field_competences_cards"
+                                    },
+                                    {
+                                        "key": "field_comp_card_full",
+                                        "label": "Pleine largeur",
+                                        "name": "skill_card_full_width",
+                                        "type": "true_false",
+                                        "instructions": "Fait occuper toute la ligne",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": { "width": "", "class": "", "id": "" },
+                                        "default_value": 0,
+                                        "ui": 1,
+                                        "parent_repeater": "field_competences_cards"
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_vision": {
+                        "key": "layout_bloc_vision",
+                        "name": "bloc_vision",
+                        "label": "Bloc Vision & Ambition",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_vision_section_title",
+                                "label": "Titre de section",
+                                "name": "section_title",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "Vision",
+                                "placeholder": "Vision",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_vision_content",
+                                "label": "Texte de vision",
+                                "name": "vision_text",
+                                "type": "wysiwyg",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bloc_experiences": {
+                        "key": "layout_bloc_experiences",
+                        "name": "bloc_experiences",
+                        "label": "Bloc Expériences (CPT)",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_exp_section_title",
+                                "label": "Titre de section",
+                                "name": "section_title",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": { "width": "", "class": "", "id": "" },
+                                "default_value": "Expériences",
+                                "placeholder": "Expériences",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
                     }
                 },
                 "min": "",
@@ -491,6 +785,13 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "projet"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-about.php"
                 }
             ]
         ],

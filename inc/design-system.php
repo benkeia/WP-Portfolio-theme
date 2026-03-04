@@ -151,8 +151,7 @@ class DS
         <section class="w-full py-20 px-4 md:px-24">
             <div class="w-full max-w-[1200px] mx-auto">
                 <div class="reveal-type text-neutral-600 text-xl md:text-3xl lg:text-4xl font-light leading-relaxed"
-                    data-bg-color="#525252"
-                    data-fg-color="#ffffff">
+                    data-bg-color="#525252" data-fg-color="#ffffff">
                     <?php echo wp_kses_post($content); ?>
                 </div>
             </div>
@@ -225,8 +224,7 @@ class DS
                         $full_url = wp_get_attachment_image_url($img_id, 'full');
                         $thumb_url = wp_get_attachment_image_url($img_id, 'medium'); // URL pour la miniature
                     ?>
-                        <a href="<?php echo esc_url($full_url); ?>"
-                            data-external-thumb-image="<?php echo esc_url($thumb_url); ?>"
+                        <a href="<?php echo esc_url($full_url); ?>" data-external-thumb-image="<?php echo esc_url($thumb_url); ?>"
                             class="lightbox-trigger no-barba block relative w-full <?php echo $class; ?> cursor-zoom-in">
                             <?php self::image($img_id, 'large', 'w-full h-full'); ?>
                         </a>
@@ -242,14 +240,14 @@ class DS
        ========================================================================== */
 
     /**
-     * BLOC : Hero Manifeste (About Page)
-     * Champs ACF : hero_subtitle, hero_title, hero_manifesto
+     * BLOC : Hero Manifeste (About Page / Builder)
+     * Champs ACF (sub_fields) : hero_subtitle, hero_title, hero_manifesto
      */
     public static function block_about_hero()
     {
-        $subtitle  = get_field('hero_subtitle')  ?: 'Creative Developer';
-        $title     = get_field('hero_title')     ?: 'Je conçois des expériences web immersives, narratives et techniques.';
-        $manifesto = get_field('hero_manifesto') ?: 'Entre code, motion et identité visuelle, je crée des interfaces qui racontent des histoires.';
+        $subtitle  = get_sub_field('hero_subtitle')  ?: 'Creative Developer';
+        $title     = get_sub_field('hero_title')     ?: 'Je conçois des expériences web immersives, narratives et techniques.';
+        $manifesto = get_sub_field('hero_manifesto') ?: 'Entre code, motion et identité visuelle, je crée des interfaces qui racontent des histoires.';
     ?>
         <section class="w-full pt-12 pb-20 px-4 md:px-24">
             <div class="w-full max-w-[1200px] mx-auto">
@@ -270,15 +268,16 @@ class DS
     }
 
     /**
-     * BLOC : Identité / Qui je suis (About Page)
-     * Champs ACF : about_origin, about_evolution, about_today
+     * BLOC : Identité / Qui je suis (Builder)
+     * Sub-champs ACF : section_title, about_origin, about_evolution, about_today
      */
     public static function block_about_identity()
     {
+        $section_title = get_sub_field('section_title') ?: 'Qui je suis';
         $subsections = [
-            'Origine'      => get_field('about_origin'),
-            'Évolution'    => get_field('about_evolution'),
-            "Aujourd'hui"  => get_field('about_today'),
+            'Origine'      => get_sub_field('about_origin'),
+            'Évolution'    => get_sub_field('about_evolution'),
+            "Aujourd'hui"  => get_sub_field('about_today'),
         ];
 
         // Si aucun champ n'est rempli, on n'affiche rien
@@ -288,7 +287,7 @@ class DS
             <div class="w-full max-w-[1200px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-3">
-                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24">Qui je suis</h2>
+                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24"><?php echo esc_html($section_title); ?></h2>
                     </div>
                     <div class="lg:col-span-9 flex flex-col gap-8">
                         <?php foreach ($subsections as $label => $content): ?>
@@ -309,30 +308,33 @@ class DS
     }
 
     /**
-     * BLOC : Compétences (About Page — ACF dynamique)
-     * Champ ACF : about_skill_cards (repeater)
+     * BLOC : Compétences (Builder)
+     * Sub-champs ACF : section_title, about_skill_cards (repeater)
      *   → skill_card_icon_svg, skill_card_title, skill_card_items[], skill_card_note, skill_card_full_width
      */
     public static function block_about_skills()
     {
-        $cards = get_field('about_skill_cards');
+        $section_title = get_sub_field('section_title') ?: 'Compétences';
+        $cards = get_sub_field('about_skill_cards');
         if (empty($cards)) return;
     ?>
         <section class="w-full py-20 px-4 md:px-24">
             <div class="w-full max-w-[1200px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-3">
-                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24">Compétences</h2>
+                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24"><?php echo esc_html($section_title); ?></h2>
                     </div>
                     <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-8">
                         <?php foreach ($cards as $card):
                             $full_width = !empty($card['skill_card_full_width']);
                             $col_class  = $full_width ? 'md:col-span-2' : '';
                         ?>
-                            <div class="flex flex-col gap-4 p-6 rounded-lg bg-neutral-800/30 border border-neutral-800 <?php echo esc_attr($col_class); ?>">
+                            <div
+                                class="flex flex-col gap-4 p-6 rounded-lg bg-neutral-800/30 border border-neutral-800 <?php echo esc_attr($col_class); ?>">
                                 <div class="flex items-center gap-3">
                                     <?php if (!empty($card['skill_card_icon_svg'])): ?>
-                                        <span class="text-neutral-400 w-6 h-6 flex items-center justify-center [&_svg]:w-6 [&_svg]:h-6 [&_svg]:stroke-current">
+                                        <span
+                                            class="text-neutral-400 w-6 h-6 flex items-center justify-center [&_svg]:w-6 [&_svg]:h-6 [&_svg]:stroke-current">
                                             <?php echo $card['skill_card_icon_svg']; ?>
                                         </span>
                                     <?php endif; ?>
@@ -364,19 +366,20 @@ class DS
     }
 
     /**
-     * BLOC : Vision & Ambition (About Page)
-     * Champ ACF : vision_text (wysiwyg)
+     * BLOC : Vision & Ambition (Builder)
+     * Sub-champs ACF : section_title, vision_text (wysiwyg)
      */
     public static function block_about_vision()
     {
-        $text = get_field('vision_text');
+        $section_title = get_sub_field('section_title') ?: 'Vision';
+        $text = get_sub_field('vision_text');
         if (!$text) return;
     ?>
         <section class="w-full py-20 px-4 md:px-24">
             <div class="w-full max-w-[1200px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-3">
-                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24">Vision</h2>
+                        <h2 class="text-neutral-50 text-2xl font-medium sticky top-24"><?php echo esc_html($section_title); ?></h2>
                     </div>
                     <div class="lg:col-span-9">
                         <div class="text-neutral-400 text-lg md:text-xl font-light leading-relaxed space-y-6">
