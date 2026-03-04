@@ -146,6 +146,50 @@ get_header();
                 DS::block_text();
             ?>
 
+            <?php
+            // --- BLOC : MANIFESTE (Hero texte) ---
+            elseif (get_row_layout() == 'bloc_manifeste'):
+                DS::block_about_hero();
+            ?>
+
+            <?php
+            // --- BLOC : IDENTITÉ (Qui je suis) ---
+            elseif (get_row_layout() == 'bloc_identite'):
+                DS::block_about_identity();
+            ?>
+
+            <?php
+            // --- BLOC : COMPÉTENCES (Cartes) ---
+            elseif (get_row_layout() == 'bloc_competences'):
+                DS::block_about_skills();
+            ?>
+
+            <?php
+            // --- BLOC : VISION & AMBITION ---
+            elseif (get_row_layout() == 'bloc_vision'):
+                DS::block_about_vision();
+            ?>
+
+            <?php
+            // --- BLOC : EXPÉRIENCES (CPT) ---
+            elseif (get_row_layout() == 'bloc_experiences'): ?>
+                <section class="w-full py-20 px-4 md:px-24">
+                    <div class="w-full max-w-[1200px] mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                            <div class="lg:col-span-3">
+                                <h2 class="text-neutral-50 text-2xl font-medium sticky top-24">
+                                    <?php echo esc_html(get_sub_field('section_title') ?: 'Expériences'); ?>
+                                </h2>
+                            </div>
+                            <div class="lg:col-span-9 flex flex-col gap-8">
+                                <?php get_template_part('template-parts/experiences'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <?php
+            ?>
+
             <?php endif; ?>
 
         <?php endwhile; ?>

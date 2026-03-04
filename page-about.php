@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: About Page
  */
@@ -22,12 +23,12 @@ get_header();
                     <div class="text-neutral-400 text-xs font-normal uppercase tracking-wider">
                         <?php echo get_field('hero_subtitle') ?: 'Creative Developer'; ?>
                     </div>
-                    
+
                     <!-- Titre principal -->
                     <h1 class="text-neutral-50 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                         <?php echo get_field('hero_title') ?: 'Je conçois des expériences web immersives, narratives et techniques.'; ?>
                     </h1>
-                    
+
                     <!-- Manifeste -->
                     <p class="text-neutral-400 text-xl md:text-2xl font-light leading-relaxed max-w-3xl">
                         <?php echo get_field('hero_manifesto') ?: 'Entre code, motion et identité visuelle, je crée des interfaces qui racontent des histoires.'; ?>
@@ -103,12 +104,12 @@ get_header();
                     <p class="text-neutral-400 text-lg font-light max-w-2xl">
                         <?php echo get_field('cta_description') ?: 'Disponible pour une alternance en développement web créatif à partir d\'octobre 2025. Je suis ouvert aux projets ambitieux, aux collaborations et aux défis techniques.'; ?>
                     </p>
-                    
+
                     <!-- Boutons sociaux -->
                     <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
                         <?php if ($email = get_field('contact_email', 'option') ?: 'contact@exemple.com'): ?>
-                            <a href="mailto:<?php echo esc_attr($email); ?>" 
-                               class="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-50 text-neutral-900 rounded-lg font-medium hover:bg-white transition-colors duration-200 no-underline">
+                            <a href="mailto:<?php echo esc_attr($email); ?>"
+                                class="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-50 text-neutral-900 rounded-lg font-medium hover:bg-white transition-colors duration-200 no-underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
@@ -116,11 +117,11 @@ get_header();
                                 <span>Me contacter</span>
                             </a>
                         <?php endif; ?>
-                        
+
                         <?php if ($cv_file = get_field('cv_file', 'option')): ?>
-                            <a href="<?php echo esc_url($cv_file['url']); ?>" 
-                               target="_blank"
-                               class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-700 text-neutral-50 rounded-lg font-medium hover:border-neutral-500 hover:text-white transition-colors duration-200 no-underline">
+                            <a href="<?php echo esc_url($cv_file['url']); ?>"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-700 text-neutral-50 rounded-lg font-medium hover:border-neutral-500 hover:text-white transition-colors duration-200 no-underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="7 10 12 15 17 10"></polyline>
@@ -130,7 +131,7 @@ get_header();
                             </a>
                         <?php endif; ?>
                     </div>
-                    
+
                     <!-- Liens sociaux supplémentaires -->
                     <?php if (have_rows('footer_socials', 'option')): ?>
                         <div class="flex flex-row items-center gap-6 mt-4">
@@ -139,12 +140,12 @@ get_header();
                                 $url = get_sub_field('network_url');
                                 $icon = get_sub_field('network_icon_svg');
                             ?>
-                                <a href="<?php echo esc_url($url); ?>" 
-                                   target="_blank" 
-                                   rel="noopener noreferrer"
-                                   aria-label="<?php echo esc_attr($name); ?>" 
-                                   title="<?php echo esc_attr($name); ?>"
-                                   class="text-neutral-400 hover:text-white transition-colors duration-200 block w-6 h-6">
+                                <a href="<?php echo esc_url($url); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="<?php echo esc_attr($name); ?>"
+                                    title="<?php echo esc_attr($name); ?>"
+                                    class="text-neutral-400 hover:text-white transition-colors duration-200 block w-6 h-6">
                                     <?php echo $icon; ?>
                                 </a>
                             <?php endwhile; ?>
