@@ -20,9 +20,12 @@ get_header();
     $img_id     = get_field('image_hero');
     ?>
 
-    <section class="w-full pt-32 pb-12 px-4 md:px-24">
+    <div class="pt-32">
+        <?php get_template_part('template-parts/breadcrumb'); ?>
+    </div>
+
+    <section class="w-full pb-12 px-4 md:px-24">
         <div class="w-full max-w-[1200px] mx-auto">
-            <?php get_template_part('template-parts/breadcrumb'); ?>
             <div class="flex flex-col gap-3 mb-12 pb-8 border-b border-neutral-800">
                 <!-- Titre principal (Nom du projet WP) avec style Hero -->
                 <div class="overflow-hidden">
@@ -187,8 +190,8 @@ get_header();
                         </div>
                     </div>
                 </section>
-            <?php
-            ?>
+                <?php
+                ?>
 
             <?php endif; ?>
 

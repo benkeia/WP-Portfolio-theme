@@ -105,32 +105,50 @@ get_header();
                         <?php echo get_field('cta_description') ?: 'Disponible pour une alternance en développement web créatif à partir d\'octobre 2025. Je suis ouvert aux projets ambitieux, aux collaborations et aux défis techniques.'; ?>
                     </p>
 
-                    <!-- Boutons sociaux -->
-                    <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
-                        <?php if ($email = get_field('contact_email', 'option') ?: 'contact@exemple.com'): ?>
-                            <a href="mailto:<?php echo esc_attr($email); ?>"
-                                class="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-50 text-neutral-900 rounded-lg font-medium hover:bg-white transition-colors duration-200 no-underline">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg>
-                                <span>Me contacter</span>
-                            </a>
-                        <?php endif; ?>
+                    <!-- Boutons CTA -->
+                    <?php
+                    $cta_primary_text = get_field('cta_primary_button_text');
+                    $cta_primary_link = get_field('cta_primary_button_link');
+                    $cta_secondary_text = get_field('cta_secondary_button_text');
+                    $cta_secondary_link = get_field('cta_secondary_button_link');
+                    $has_cta_buttons = ($cta_primary_text && $cta_primary_link) || ($cta_secondary_text && $cta_secondary_link);
+                    ?>
 
-                        <?php if ($cv_file = get_field('cv_file', 'option')): ?>
-                            <a href="<?php echo esc_url($cv_file['url']); ?>"
-                                target="_blank"
-                                class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-700 text-neutral-50 rounded-lg font-medium hover:border-neutral-500 hover:text-white transition-colors duration-200 no-underline">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                    <line x1="12" x2="12" y1="15" y2="3"></line>
-                                </svg>
-                                <span>Télécharger mon CV</span>
-                            </a>
-                        <?php endif; ?>
-                    </div>
+                    <?php if ($has_cta_buttons): ?>
+                        <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
+                            <?php if ($cta_primary_text && $cta_primary_link): ?>
+                                <a href="<?php echo esc_url($cta_primary_link); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-50 text-neutral-900 rounded-lg font-medium hover:bg-white transition-colors duration-200 no-underline">
+                                    <?php echo esc_html($cta_primary_text); ?>
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if ($cta_secondary_text && $cta_secondary_link): ?>
+                                <a href="<?php echo esc_url($cta_secondary_link); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-700 text-neutral-50 rounded-lg font-medium hover:border-neutral-500 hover:text-white transition-colors duration-200 no-underline">
+                                    <?php echo esc_html($cta_secondary_text); ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php else: ?>
+                        <!-- Fallback : bouton email depuis les options -->
+                        <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
+                            <?php if ($email = get_field('contact_email', 'option') ?: 'contact@exemple.com'): ?>
+                                <a href="mailto:<?php echo esc_attr($email); ?>"
+                                    class="group inline-flex items-center gap-2 px-6 py-3 bg-neutral-50 text-neutral-900 rounded-lg font-medium hover:bg-white transition-colors duration-200 no-underline">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                    </svg>
+                                    <span>Me contacter</span>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
                     <!-- Liens sociaux supplémentaires -->
                     <?php if (have_rows('footer_socials', 'option')): ?>
